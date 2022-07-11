@@ -1,4 +1,3 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<h1 class="text-3xl font-extralight  text-[#25f8b9db]">Tabla periódica de la Nueva Constitución</h1>
 
-<h1 class="text-3xl font-bold underline">Hello world!</h1>
+<img class="max-w-lg m-auto" src="./como-funciona.webp" alt="Como Funciona" />
