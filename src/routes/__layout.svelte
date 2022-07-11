@@ -20,7 +20,7 @@
 		>
 	</p>
 	<p class="text-white">
-		El código es OpenSource en Github, siéntase libres de participar:
+		El código es OpenSource, siéntase libres de participar:
 		<a class="underline" href="https://github.com/Antoine-lb/tabla-constitucional-back"
 			>Backend (Strapi)</a
 		>
