@@ -1,9 +1,12 @@
 <script>
+	import Modal from 'svelte-simple-modal';
 	import '../app.css';
 </script>
 
 <div class="p-6">
-	<slot />
+	<Modal>
+		<slot />
+	</Modal>
 </div>
 
 <footer class="bg-[#ffffff57] p-10 text-lg">

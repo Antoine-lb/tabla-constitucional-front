@@ -28,8 +28,9 @@
 </script>
 
 <script lang="ts">
+	import Articulo from '../components/Articulo.svelte';
+
 	export let capitulos: RawCapitulo[];
-	console.log('capitulos', capitulos);
 </script>
 
 <h1 class="text-3xl font-extralight  text-[#25f8b9db]">Tabla periódica de la Nueva Constitución</h1>
@@ -41,22 +42,7 @@
 	{#each capitulo.attributes.sub_capitulos.data as subCapitulo}
 		<h2 class="text-white text-xl pl-3">{subCapitulo.attributes.Nombre}</h2>
 		{#each subCapitulo.attributes.articulos.data as articulo}
-			<div class="inline-block">
-				<div
-					class=" flex flex-col rounded-md p-2 w-[110px] h-[140px] articulo-animacion shadow m-2 cursor-pointer"
-					style={`background-color: #${subCapitulo.attributes.hex_color}`}
-				>
-					<div class="flex place-content-between">
-						<span
-							>{articulo.attributes.numero_de_articulo}({articulo.attributes
-								.numero_de_incisos})</span
-						>
-						<span>p.{articulo.attributes.pagina}</span>
-					</div>
-					<div class="m-auto text-6xl">{articulo.attributes.simbolo}</div>
-					<div class="m-auto text-xs">{articulo.attributes.nombre_corto}</div>
-				</div>
-			</div>
+			<Articulo {articulo} hex_color={subCapitulo.attributes.hex_color} />
 		{/each}
 	{/each}
 {/each}
