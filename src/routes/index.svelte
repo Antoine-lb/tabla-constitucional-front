@@ -33,14 +33,27 @@
 </script>
 
 <h1 class="text-4xl md:text-6xl pl-3 md:pl-6 font-extralight text-[#25f8b9db] my-5">
-	Tabla periódica de la Nueva Constitución
+	Tabla periódica de la Nueva Constitución Chilena
 </h1>
 
 <p class="pl-3 md:pl-6 text-white text-lg">
 	En esta página se encuentran todos los articulos de la <a
 		href="https://www.chileconvencion.cl/"
 		class="underline">nueva constitución</a
-	> separado por capítulos y subcapítulos.
+	> separado por capítulos y subcapítulos. Está animado como una tabla periódica y separada en colores
+	para hacerla mas entretenida.
+</p>
+
+<h1 class="text-4xl md:text-6xl pl-3 md:pl-6 font-extralight text-[#25f8b9db] my-5">
+	#SinArticuloNoHayDebate
+</h1>
+<p class="pl-3 md:pl-6 text-white text-lg">
+	Exijamos un debate constructivo, criticar la constitución sin citar artículos no sirve de gran
+	cosa.
+</p>
+<br />
+<p class="pl-3 md:pl-6 text-white text-lg">
+	<strong>#SinArticuloNoHayDebate</strong>, no se caliente la cabeza.
 </p>
 
 <img class="max-w-xl w-full mt-10 m-auto" src="./como-funciona.webp" alt="Como Funciona" />
