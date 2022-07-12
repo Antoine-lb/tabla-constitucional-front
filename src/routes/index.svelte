@@ -66,10 +66,10 @@
 <p class="pl-3 md:pl-6 text-white text-lg">
 	<strong>#SinArticuloNoHayDebate</strong>, no se caliente la cabeza.
 </p>
-<h1 class="text-3xl md:text-4xl pl-3 md:pl-6 font-extralight text-[#25f8b9db] my-5">
+<!-- <h1 class="text-3xl md:text-4xl pl-3 md:pl-6 font-extralight text-[#25f8b9db] my-5">
 	Cómo funciona
 </h1>
-<p class="pl-3 md:pl-6 text-white text-lg">Cada artículo es un elemento en la tabla periodica.</p>
+<p class="pl-3 md:pl-6 text-white text-lg">Cada artículo es un elemento en la tabla periodica.</p> -->
 <br />
 
 <img class="max-w-xl w-full mt-10 m-auto" src="./como-funciona.webp" alt="Como Funciona" />
