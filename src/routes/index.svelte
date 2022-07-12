@@ -34,12 +34,13 @@
 	const BACKEND_URL = 'https://tabla-constitucional.herokuapp.com/api';
 
 	export async function load({ url, fetch }) {
-		const res = await fetch(`${BACKEND_URL}/capitulos`);
+		const res = await fetch(`${BACKEND_URL}/capitulos?populate[0]=sub_capitulos`);
 		let capitulos = [];
 
 		if (res.ok) {
 			const response = await res.json();
 			capitulos = response.data;
+			console.log('capitulos asd', capitulos);
 		} else {
 			return { status: res.status, error: new Error(`Could not load ${url}`) };
 		}
@@ -58,7 +59,6 @@
 		if (res3.ok) {
 			const response = await res3.json();
 			articulos = response.data;
-			console.log('totaa', articulos);
 		} else {
 			return { status: res3.status, error: new Error(`Could not load ${url}`) };
 		}
@@ -77,7 +77,6 @@
 	export let capitulos: Capitulo[];
 	export let subCapitulos: SubCapitulo[];
 	export let articulos: Articulo[];
-	console.log('articulos', articulos);
 </script>
 
 <h1 class="text-3xl font-extralight  text-[#25f8b9db]">Tabla periódica de la Nueva Constitución</h1>
