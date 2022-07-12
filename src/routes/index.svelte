@@ -52,12 +52,15 @@
 	<div class="mb-4">
 		<a
 			class="text-lg md:text-lg pl-3 md:pl-6 text-white  mt-2"
-			href={`#${capitulo.attributes.Nombre}`}
+			href={`#cat${capitulo.attributes.Nombre}`}
 		>
 			{capitulo.attributes.Nombre}
 		</a>
 		{#each capitulo.attributes.sub_capitulos.data as subCapitulo}
-			<div class="pl-3 md:pl-6 flex items-center mt-1">
+			<a
+				class="pl-3 md:pl-6 flex items-center mt-1"
+				href={`#subcat${subCapitulo.attributes.Nombre}`}
+			>
 				<span
 					class="w-4 h-4 inline-block flex-none shadow-3xl rounded-full"
 					style={`background-color: #${subCapitulo.attributes.hex_color}`}
@@ -65,7 +68,7 @@
 				<h3 class="text-md md:text-md text-white pl-3">
 					{subCapitulo.attributes.Nombre}
 				</h3>
-			</div>
+			</a>
 		{/each}
 	</div>
 {/each}
@@ -73,12 +76,15 @@
 {#each capitulos as capitulo}
 	<h2
 		class="text-2xl md:text-3xl pl-3 md:pl-6 text-white font-bold mt-6"
-		id={capitulo.attributes.Nombre}
+		id={`cat${capitulo.attributes.Nombre}`}
 	>
 		{capitulo.attributes.Nombre}
 	</h2>
 	{#each capitulo.attributes.sub_capitulos.data as subCapitulo}
-		<div class="pl-3 md:pl-6 flex items-center mt-4 mb-2">
+		<div
+			class="pl-3 md:pl-6 flex items-center mt-4 mb-2"
+			id={`subcat${subCapitulo.attributes.Nombre}`}
+		>
 			<span
 				class="w-7 h-7 inline-block flex-none shadow-3xl rounded-full"
 				style={`background-color: #${subCapitulo.attributes.hex_color}`}
