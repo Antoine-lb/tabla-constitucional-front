@@ -36,7 +36,14 @@
 	Tabla periódica de la Nueva Constitución
 </h1>
 
-<img class="max-w-xl w-full m-auto" src="./como-funciona.webp" alt="Como Funciona" />
+<p class="pl-3 md:pl-6 text-white text-lg">
+	En esta página se encuentran todos los articulos de la <a
+		href="https://www.chileconvencion.cl/"
+		class="underline">nueva constitución</a
+	> separado por capítulos y subcapítulos.
+</p>
+
+<img class="max-w-xl w-full mt-10 m-auto" src="./como-funciona.webp" alt="Como Funciona" />
 
 {#each capitulos as capitulo}
 	<h2 class="text-2xl md:text-3xl pl-3 md:pl-6 text-white font-bold mt-6">
@@ -48,9 +55,9 @@
 				class="w-7 h-7 inline-block flex-none shadow-3xl rounded-full"
 				style={`background-color: #${subCapitulo.attributes.hex_color}`}
 			/>
-			<h2 class="text-xl md:text-2xl text-white pl-3">
+			<h3 class="text-xl md:text-2xl text-white pl-3">
 				{subCapitulo.attributes.Nombre}
-			</h2>
+			</h3>
 		</div>
 		<div class="pl-3 md:pl-6 mb-6 md:mb-10">
 			{#each subCapitulo.attributes.articulos.data as articulo}
