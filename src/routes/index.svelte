@@ -34,7 +34,9 @@
 	const BACKEND_URL = 'https://tabla-constitucional.herokuapp.com/api';
 
 	export async function load({ url, fetch }) {
-		const res = await fetch(`${BACKEND_URL}/capitulos?populate[0]=sub_capitulos`);
+		const res = await fetch(
+			`${BACKEND_URL}/capitulos?populate[sub_capitulos][populate][0]=articulos`
+		);
 		let capitulos = [];
 
 		if (res.ok) {

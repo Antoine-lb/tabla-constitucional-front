@@ -7,6 +7,7 @@ type RawCapitulo = {
 		numero_del_capitulo: number;
 		createdAt: string;
 		updatedAt: string;
+		subcapitulos: RawCapitulo[]; // EJEMPLO, BORRAR
 	};
 };
 
