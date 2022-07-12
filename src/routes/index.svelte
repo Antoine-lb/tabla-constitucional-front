@@ -45,8 +45,36 @@
 
 <img class="max-w-xl w-full mt-10 m-auto" src="./como-funciona.webp" alt="Como Funciona" />
 
+<h2 class="text-2xl md:text-3xl pl-3 md:pl-6 text-white font-bold mt-6 inline-block">Index</h2>
+<span class="text-white text-sm italic">(link clickables)</span>
+<br />
 {#each capitulos as capitulo}
-	<h2 class="text-2xl md:text-3xl pl-3 md:pl-6 text-white font-bold mt-6">
+	<div class="mb-4">
+		<a
+			class="text-lg md:text-lg pl-3 md:pl-6 text-white  mt-2"
+			href={`#${capitulo.attributes.Nombre}`}
+		>
+			{capitulo.attributes.Nombre}
+		</a>
+		{#each capitulo.attributes.sub_capitulos.data as subCapitulo}
+			<div class="pl-3 md:pl-6 flex items-center mt-1">
+				<span
+					class="w-4 h-4 inline-block flex-none shadow-3xl rounded-full"
+					style={`background-color: #${subCapitulo.attributes.hex_color}`}
+				/>
+				<h3 class="text-md md:text-md text-white pl-3">
+					{subCapitulo.attributes.Nombre}
+				</h3>
+			</div>
+		{/each}
+	</div>
+{/each}
+
+{#each capitulos as capitulo}
+	<h2
+		class="text-2xl md:text-3xl pl-3 md:pl-6 text-white font-bold mt-6"
+		id={capitulo.attributes.Nombre}
+	>
 		{capitulo.attributes.Nombre}
 	</h2>
 	{#each capitulo.attributes.sub_capitulos.data as subCapitulo}

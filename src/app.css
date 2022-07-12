@@ -25,6 +25,10 @@ body {
 	animation: jelly 0.5s;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 @keyframes jelly {
 	25% {
 		transform: scale(0.9, 1.1);

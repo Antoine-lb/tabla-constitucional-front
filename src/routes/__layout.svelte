@@ -17,6 +17,13 @@
 		>
 	</div>
 	<p class="text-white">
+		Para ver el documento oficial (en PDF): <a
+			class="underline"
+			href="https://www.chileconvencion.cl/wp-content/uploads/2022/07/Texto-CPR-2022.pdf"
+			>www.chileconvencion.cl</a
+		>
+	</p>
+	<p class="text-white">
 		Para toda información con respecto a la página contactar <a
 			class="underline"
 			href="https://twitter.com/XCMLBG">@XCMLBG</a
