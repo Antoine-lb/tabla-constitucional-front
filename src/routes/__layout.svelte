@@ -29,4 +29,5 @@
 			>Front-end (SvelteKit)</a
 		>
 	</p>
+	<p class="text-white pt-10">®CallateSchalper 2022</p>
 </footer>

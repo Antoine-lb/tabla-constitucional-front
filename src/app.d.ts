@@ -7,13 +7,8 @@ type RawCapitulo = {
 		numero_del_capitulo: number;
 		createdAt: string;
 		updatedAt: string;
-		subcapitulos: RawCapitulo[]; // EJEMPLO, BORRAR
+		sub_capitulos: { data: RawSubCapitulo[] };
 	};
-};
-
-type Capitulo = {
-	nombre: string;
-	numero_del_capitulo: number;
 };
 
 type RawSubCapitulo = {
@@ -24,13 +19,8 @@ type RawSubCapitulo = {
 		hex_color: string;
 		createdAt: string;
 		updatedAt: string;
+		articulos: { data: RawArticulo[] };
 	};
-};
-
-type SubCapitulo = {
-	nombre: string;
-	prioridad: number;
-	hex_color: string;
 };
 
 type RawArticulo = {
@@ -45,13 +35,4 @@ type RawArticulo = {
 		createdAt: string;
 		updatedAt: string;
 	};
-};
-
-type Articulo = {
-	contenido: string;
-	nombre_corto: string;
-	numero_de_articulo: number;
-	numero_de_incisos: number;
-	pagina: number;
-	simbolo: string;
 };
