@@ -38,11 +38,15 @@
 		if (res2.ok) {
 			const response = await res2.json();
 			subCapitulos = response.data;
-			console.log("toto", subCapitulos);
 		} else {
 			return { status: res2.status, error: new Error(`Could not load ${url}`) };
 		}
-		return { props: { capitulos: sanitizeCapitulos(capitulos), subCapitulos: sanitizeSubCapitulos(subCapitulos) } };
+		return {
+			props: {
+				capitulos: sanitizeCapitulos(capitulos),
+				subCapitulos: sanitizeSubCapitulos(subCapitulos)
+			}
+		};
 	}
 </script>
 
@@ -62,3 +66,12 @@
 {#each subCapitulos as subCapitulo}
 	<h2 class="text-white text-md">{subCapitulo.nombre}</h2>
 {/each}
+
+<div class="bg-[#DA82B4] flex flex-col rounded-md p-2 max-w-[100px] articulo-animacion shadow">
+	<div class="flex place-content-between">
+		<span>1(3)</span>
+		<span>p.5</span>
+	</div>
+	<div class="m-auto text-6xl">E</div>
+	<div class="m-auto">Estado</div>
+</div>
