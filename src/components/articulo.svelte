@@ -13,7 +13,7 @@
 
 <button class="inline-block" on:click={showSurprise}>
 	<div
-		class=" flex flex-col rounded-md p-2 w-[110px] h-[140px] articulo-animacion shadow-3xl m-2 cursor-pointer"
+		class=" flex flex-col rounded-lg p-2 w-[110px] h-[140px] articulo-animacion shadow-3xl m-1 cursor-pointer"
 		style={`background-color: #${hex_color}`}
 	>
 		<div class="flex place-content-between">

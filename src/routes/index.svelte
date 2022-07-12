@@ -28,7 +28,7 @@
 </script>
 
 <script lang="ts">
-	// import Articulo from '../components/Articulo.svelte';
+	import Articulo from '../components/Articulo.svelte';
 	import { getContext } from 'svelte';
 	import Popup from '../components/Popup.svelte';
 	const { open } = getContext('simple-modal');
@@ -38,31 +38,30 @@
 	export let capitulos: RawCapitulo[];
 </script>
 
-<h1 class="text-3xl font-extralight  text-[#25f8b9db]">Tabla periódica de la Nueva Constitución</h1>
+<h1 class="text-4xl md:text-6xl pl-3 md:pl-6 font-extralight text-[#25f8b9db] my-5">
+	Tabla periódica de la Nueva Constitución
+</h1>
 
-<img class="max-w-lg w-full m-auto" src="./como-funciona.webp" alt="Como Funciona" />
+<img class="max-w-xl w-full m-auto" src="./como-funciona.webp" alt="Como Funciona" />
 
 {#each capitulos as capitulo}
-	<h2 class="text-white text-3xl">{capitulo.attributes.Nombre}</h2>
+	<h2 class="text-2xl md:text-3xl pl-3 md:pl-6 text-white font-bold mt-6">
+		{capitulo.attributes.Nombre}
+	</h2>
 	{#each capitulo.attributes.sub_capitulos.data as subCapitulo}
-		<h2 class="text-white text-xl pl-3">{subCapitulo.attributes.Nombre}</h2>
-		{#each subCapitulo.attributes.articulos.data as articulo}
-			<button class="inline-block" on:click={() => showSurprise(articulo)}>
-				<div
-					class=" flex flex-col rounded-md p-2 w-[110px] h-[140px] articulo-animacion shadow-3xl m-2 cursor-pointer"
-					style={`background-color: #${subCapitulo.attributes.hex_color}`}
-				>
-					<div class="flex place-content-between">
-						<span
-							>{articulo.attributes.numero_de_articulo}({articulo.attributes
-								.numero_de_incisos})</span
-						>
-						<span>p.{articulo.attributes.pagina}</span>
-					</div>
-					<div class="m-auto text-6xl">{articulo.attributes.simbolo}</div>
-					<div class="m-auto text-xs">{articulo.attributes.nombre_corto}</div>
-				</div>
-			</button>
-		{/each}
+		<div class="pl-3 md:pl-6 flex items-center mt-4 mb-2">
+			<span
+				class="w-7 h-7 inline-block flex-none shadow-3xl rounded-full"
+				style={`background-color: #${subCapitulo.attributes.hex_color}`}
+			/>
+			<h2 class="text-xl md:text-2xl text-white pl-3">
+				{subCapitulo.attributes.Nombre}
+			</h2>
+		</div>
+		<div class="pl-3 md:pl-6 mb-6 md:mb-10">
+			{#each subCapitulo.attributes.articulos.data as articulo}
+				<Articulo {articulo} hex_color={subCapitulo.attributes.hex_color} />
+			{/each}
+		</div>
 	{/each}
 {/each}

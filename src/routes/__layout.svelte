@@ -3,13 +3,13 @@
 	import '../app.css';
 </script>
 
-<div class="p-6">
+<div>
 	<Modal>
 		<slot />
 	</Modal>
 </div>
 
-<footer class="bg-[#ffffff57] p-10 text-lg">
+<footer class="bg-[#ffffff57] p-10 text-lg mt-20">
 	<div class="text-white">
 		Inspirado del tweet de <a
 			class="underline"
@@ -23,13 +23,9 @@
 		>
 	</p>
 	<p class="text-white">
-		El código es OpenSource, siéntase libres de participar:
-		<a class="underline" href="https://github.com/Antoine-lb/tabla-constitucional-back"
-			>Backend (Strapi)</a
-		>
-		y
+		Github:
 		<a class="underline" href="https://github.com/Antoine-lb/tabla-constitucional-front"
-			>Front-end (SvelteKit)</a
+			>tabla-constitucional-front</a
 		>
 	</p>
 	<p class="text-white pt-10">®CallateSchalper 2022</p>

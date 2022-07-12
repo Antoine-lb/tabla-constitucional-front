@@ -2,8 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+	box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+/* Avoid zoom on double click iphone */
+.disable-dbl-tap-zoom {
+	touch-action: manipulation;
+}
+
 body {
 	background-color: #33005f;
+	position: static !important;
 }
 
 .articulo-animacion:hover {
