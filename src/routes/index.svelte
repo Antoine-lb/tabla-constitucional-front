@@ -91,13 +91,14 @@
 	<h2 class="text-white text-md">{subCapitulo.nombre}</h2>
 {/each}
 {#each articulos as articulo}
-	<h2 class="text-white text-xs">{articulo.contenido}</h2>
-	<div class="bg-[#DA82B4] flex flex-col rounded-md p-2 max-w-[100px] articulo-animacion shadow">
+	<div
+		class="bg-[#DA82B4] flex flex-col rounded-md p-2 max-w-[100px] articulo-animacion shadow m-3 cursor-pointer"
+	>
 		<div class="flex place-content-between">
-			<span>1(3)</span>
-			<span>p.5</span>
+			<span>{articulo.numero_de_articulo}({articulo.numero_de_incisos})</span>
+			<span>p.{articulo.pagina}</span>
 		</div>
-		<div class="m-auto text-6xl">E</div>
-		<div class="m-auto">Estado</div>
+		<div class="m-auto text-6xl">{articulo.simbolo}</div>
+		<div class="m-auto text-xs">{articulo.nombre_corto}</div>
 	</div>
 {/each}
