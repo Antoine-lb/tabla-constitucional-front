@@ -17,7 +17,10 @@
 		style={`background-color: #${hex_color}`}
 	>
 		<div class="flex place-content-between">
-			<span>{articulo.attributes.numero_de_articulo}({articulo.attributes.numero_de_incisos})</span>
+			<span
+				>{articulo.attributes.numero_de_articulo}
+				<span class="text-xs">({articulo.attributes.numero_de_incisos})</span></span
+			>
 			<span>p.{articulo.attributes.pagina}</span>
 		</div>
 		<div class="m-auto text-6xl">{articulo.attributes.simbolo}</div>

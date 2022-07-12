@@ -28,7 +28,7 @@
 </script>
 
 <script lang="ts">
-	import Articulo from '../components/Articulo.svelte';
+	import Articulo from '../components/ArticuloComponent.svelte';
 	import { getContext } from 'svelte';
 	import Popup from '../components/Popup.svelte';
 	const { open } = getContext('simple-modal');
