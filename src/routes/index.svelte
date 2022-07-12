@@ -28,7 +28,7 @@
 </script>
 
 <script lang="ts">
-	import Articulo from '../components/Articulo.svelte';
+	// import Articulo from '../components/Articulo.svelte';
 
 	export let capitulos: RawCapitulo[];
 </script>
@@ -41,8 +41,8 @@
 	<h2 class="text-white text-3xl">{capitulo.attributes.Nombre}</h2>
 	{#each capitulo.attributes.sub_capitulos.data as subCapitulo}
 		<h2 class="text-white text-xl pl-3">{subCapitulo.attributes.Nombre}</h2>
-		{#each subCapitulo.attributes.articulos.data as articulo}
+		<!-- {#each subCapitulo.attributes.articulos.data as articulo}
 			<Articulo {articulo} hex_color={subCapitulo.attributes.hex_color} />
-		{/each}
+		{/each} -->
 	{/each}
 {/each}
