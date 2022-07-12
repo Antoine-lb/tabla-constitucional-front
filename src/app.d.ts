@@ -1,6 +1,6 @@
 /// <reference types="@sveltejs/kit" />
 
-type RawCapitulos = {
+type RawCapitulo = {
 	id: number;
 	attributes: {
 		Nombre: string;
@@ -13,4 +13,21 @@ type RawCapitulos = {
 type Capitulo = {
 	nombre: string;
 	numero_del_capitulo: number;
+};
+
+type RawSubCapitulo = {
+	id: number;
+	attributes: {
+		Nombre: string;
+		Prioridad: number;
+		hex_color: string;
+		createdAt: string;
+		updatedAt: string;
+	};
+};
+
+type SubCapitulo = {
+	nombre: string;
+	prioridad: number;
+	hex_color: string;
 };

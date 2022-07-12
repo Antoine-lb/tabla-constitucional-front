@@ -4,12 +4,20 @@
 	 */
 	// export const prerender = true;
 
-	function sanitizeCapitulos(rawCapitulos: RawCapitulos[]) {
+	function sanitizeCapitulos(rawCapitulos: RawCapitulo[]) {
 		const cleanCapitulos: Capitulo[] = rawCapitulos.map((capitulo) => ({
 			nombre: capitulo.attributes.Nombre,
 			numero_del_capitulo: capitulo.attributes.numero_del_capitulo
 		}));
 		return cleanCapitulos;
+	}
+	function sanitizeSubCapitulos(rawSubCapitulos: RawSubCapitulo[]) {
+		const cleanSubCapitulos: SubCapitulo[] = rawSubCapitulos.map((capitulo) => ({
+			nombre: capitulo.attributes.Nombre,
+			prioridad: capitulo.attributes.Prioridad,
+			hex_color: capitulo.attributes.hex_color
+		}));
+		return cleanSubCapitulos;
 	}
 
 	const BACKEND_URL = 'https://tabla-constitucional.herokuapp.com/api';
@@ -24,13 +32,24 @@
 		} else {
 			return { status: res.status, error: new Error(`Could not load ${url}`) };
 		}
-		return { props: { capitulos: sanitizeCapitulos(capitulos) } };
+		const res2 = await fetch(`${BACKEND_URL}/sub-capitulos`);
+		let subCapitulos = [];
+
+		if (res2.ok) {
+			const response = await res2.json();
+			subCapitulos = response.data;
+			console.log("toto", subCapitulos);
+		} else {
+			return { status: res2.status, error: new Error(`Could not load ${url}`) };
+		}
+		return { props: { capitulos: sanitizeCapitulos(capitulos), subCapitulos: sanitizeSubCapitulos(subCapitulos) } };
 	}
 </script>
 
 <script lang="ts">
 	export let capitulos: Capitulo[];
-	console.log('capitulos', capitulos);
+	export let subCapitulos: SubCapitulo[];
+	console.log('subCapitulos', subCapitulos);
 </script>
 
 <h1 class="text-3xl font-extralight  text-[#25f8b9db]">Tabla periódica de la Nueva Constitución</h1>
@@ -39,4 +58,7 @@
 
 {#each capitulos as capitulo}
 	<h2 class="text-white text-xl">{capitulo.nombre}</h2>
+{/each}
+{#each subCapitulos as subCapitulo}
+	<h2 class="text-white text-md">{subCapitulo.nombre}</h2>
 {/each}
