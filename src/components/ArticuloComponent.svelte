@@ -1,15 +1,28 @@
 <script lang="ts">
+	import { readHistory } from '../stores/readHistoryStore';
+
 	import { getContext } from 'svelte';
 	import Popup from './Popup.svelte';
 	const { open } = getContext('simple-modal');
 
-	const showSurprise = () => open(Popup, { articulo: articulo });
-
 	export let articulo: RawArticulo;
 	export let hex_color: string;
-</script>
 
-<!-- <p><button on:click={showSurprise}>Show me a surprise!</button></p> -->
+	readHistory.subscribe((value) => {
+		if (value.find((val) => val === articulo.id)) {
+			if (hex_color.length <= 6) {
+				hex_color = `${hex_color}88`;
+			}
+		}
+	});
+
+	const showSurprise = () => {
+		if (!$readHistory.find((val) => val === articulo.id)) {
+			$readHistory = [...$readHistory, articulo.id];
+		}
+		open(Popup, { articulo: articulo });
+	};
+</script>
 
 <button class="inline-block" on:click={showSurprise}>
 	<div
