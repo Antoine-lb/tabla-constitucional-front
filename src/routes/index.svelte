@@ -49,10 +49,10 @@
 </h1>
 
 <p class="pl-3 md:pl-6 text-white text-lg">
-	En esta página se encuentran todos los articulos de la <a
+	En esta página se encuentran todos los artículos de la <a
 		href="https://www.chileconvencion.cl/"
 		class="underline">nueva constitución</a
-	> separado por capítulos y subcapítulos. Está animado como una tabla periódica y separada en colores
+	> separados por capítulos y subcapítulos. Está animado como una tabla periódica y separada en colores
 	para hacerla mas entretenida.
 </p>
 
