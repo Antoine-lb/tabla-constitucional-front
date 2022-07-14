@@ -26,8 +26,8 @@
 
 <button class="m-2 block" on:click={showSurprise}>
 	<div
-		class=" flex flex-col rounded-lg p-2 w-[140px] h-[140px] articulo-animacion shadow-3xl m-1 cursor-pointer"
-		style={`background-color: #${hex_color}`}
+		class=" flex flex-col rounded-lg p-2 w-[140px] h-[140px] articulo-animacion shadow-custom shadow-3xl m-1 cursor-pointer"
+		style={`background-color: #${hex_color};`}
 	>
 		<div class="flex place-content-between">
 			<span
@@ -48,5 +48,9 @@
 		-webkit-line-clamp: 2;
 		-webkit-box-orient: vertical;
 		overflow: hidden;
+	}
+
+	.shadow-custom {
+		box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 	}
 </style>

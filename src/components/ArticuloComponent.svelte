@@ -24,12 +24,10 @@
 	};
 </script>
 
-<!-- style={`background-color: #${hex_color}; box-shadow: 10px 5px 5px #${hex_color};`} -->
-
 <button class="inline-block" on:click={showSurprise}>
 	<div
 		class=" flex flex-col rounded-lg p-2 w-[110px] h-[140px] articulo-animacion shadow-3xl shadow-custom m-1 cursor-pointer"
-		style={`background-color: #${hex_color}ef; border: 1px solid #${hex_color};`}
+		style={`background-color: #${hex_color};`}
 	>
 		<div class="flex place-content-between">
 			<span
