@@ -45,7 +45,7 @@
 	}
 
 	if (window?.location?.href) {
-		console.log('window.location.href', window.location.href);
+		console.log('window.location.href', window?.location?.href);
 	} else {
 		console.log('dio falso para: window?.location?.href', window?.location?.href);
 	}
