@@ -24,7 +24,7 @@
 	};
 </script>
 
-<button class="m-5 inline-block" on:click={showSurprise}>
+<button class="m-3 inline-block" on:click={showSurprise}>
 	<div
 		class=" flex flex-col rounded-lg p-2 w-[140px] h-[140px] articulo-animacion shadow-3xl m-1 cursor-pointer"
 		style={`background-color: #${hex_color}`}
