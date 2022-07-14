@@ -4,12 +4,13 @@
 	 */
 	// export const prerender = true;
 
-	const BACKEND_URL = 'https://tabla-constitucional.herokuapp.com/api';
+	// const BACKEND_URL = 'https://tabla-constitucional.herokuapp.com/api';
 
 	export async function load({ url, fetch }) {
-		const res = await fetch(
-			`${BACKEND_URL}/capitulos?populate[sub_capitulos][populate][0]=articulos`
-		);
+		// const res = await fetch(
+		// 	`${BACKEND_URL}/capitulos?populate[sub_capitulos][populate][0]=articulos`
+		// );
+		const res = await fetch(`./data.json`);
 		let capitulos = [];
 
 		if (res.ok) {
@@ -41,6 +42,12 @@
 			}
 			return 0;
 		});
+	}
+
+	if (window?.location?.href) {
+		console.log('window.location.href', window.location.href);
+	} else {
+		console.log('dio falso para: window?.location?.href', window?.location?.href);
 	}
 </script>
 
@@ -78,7 +85,7 @@
 <span class="text-white text-sm italic">(link clickables)</span>
 <br />
 {#each capitulos as capitulo}
-	<div class="mb-4">
+	<div class="mb-4 inline-block align-top md:w-[350px]">
 		<a
 			class="text-lg md:text-lg pl-3 md:pl-6 text-white  mt-2"
 			href={`#cat${capitulo.attributes.Nombre}`}
