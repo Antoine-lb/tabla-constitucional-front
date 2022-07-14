@@ -46,10 +46,9 @@
 	}
 
 	if (browser) {
-		if (window?.location?.href) {
+		if (window?.location?.href.includes('netlify.app')) {
+			window?.location?.replace('https://tabla-constitucional.cl/');
 			console.log('window.location.href', window?.location?.href);
-		} else {
-			console.log('dio falso para: window?.location?.href', window?.location?.href);
 		}
 	}
 </script>
