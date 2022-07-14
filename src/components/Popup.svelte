@@ -21,3 +21,5 @@
 		{/if}
 	{/each}
 </ul>
+
+<p class="font-bold text-md mt-10">Página: {articulo.attributes.pagina}</p>
