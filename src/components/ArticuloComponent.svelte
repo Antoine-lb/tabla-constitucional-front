@@ -24,10 +24,12 @@
 	};
 </script>
 
+<!-- style={`background-color: #${hex_color}; box-shadow: 10px 5px 5px #${hex_color};`} -->
+
 <button class="inline-block" on:click={showSurprise}>
 	<div
-		class=" flex flex-col rounded-lg p-2 w-[110px] h-[140px] articulo-animacion shadow-3xl m-1 cursor-pointer"
-		style={`background-color: #${hex_color}`}
+		class=" flex flex-col rounded-lg p-2 w-[110px] h-[140px] articulo-animacion shadow-3xl shadow-custom m-1 cursor-pointer"
+		style={`background-color: #${hex_color}ef; border: 1px solid #${hex_color};`}
 	>
 		<div class="flex place-content-between">
 			<span
@@ -48,5 +50,9 @@
 		-webkit-line-clamp: 2;
 		-webkit-box-orient: vertical;
 		overflow: hidden;
+	}
+
+	.shadow-custom {
+		box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 	}
 </style>
