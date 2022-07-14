@@ -31,6 +31,7 @@
 <script lang="ts">
 	import Articulo from '../components/ArticuloComponent.svelte';
 	export let capitulos: RawCapitulo[];
+	import { browser } from '$app/env';
 
 	function sortedArticulos(articulos: RawArticulo[]) {
 		return articulos.sort((a, b) => {
@@ -44,11 +45,13 @@
 		});
 	}
 
-	// if (window?.location?.href) {
-	// 	console.log('window.location.href', window?.location?.href);
-	// } else {
-	// 	console.log('dio falso para: window?.location?.href', window?.location?.href);
-	// }
+	if (browser) {
+		if (window?.location?.href) {
+			console.log('window.location.href', window?.location?.href);
+		} else {
+			console.log('dio falso para: window?.location?.href', window?.location?.href);
+		}
+	}
 </script>
 
 <h1 class="text-4xl md:text-6xl pl-3 md:pl-6 font-extralight text-[#25f8b9db] my-5">
@@ -85,7 +88,7 @@
 <span class="text-white text-sm italic">(link clickables)</span>
 <br />
 {#each capitulos as capitulo}
-	<div class="mb-4 inline-block align-top md:w-[350px]">
+	<div class="mb-4">
 		<a
 			class="text-lg md:text-lg pl-3 md:pl-6 text-white  mt-2"
 			href={`#cat${capitulo.attributes.Nombre}`}
