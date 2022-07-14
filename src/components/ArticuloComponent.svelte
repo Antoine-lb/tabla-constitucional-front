@@ -36,7 +36,7 @@
 			>
 			<span>p.{articulo.attributes.pagina}</span>
 		</div>
-		<div class="m-auto text-6xl">{articulo.attributes.simbolo}</div>
+		<div class="m-auto text-5xl">{articulo.attributes.simbolo}</div>
 		<div class="m-auto text-xs nombre_corto">{articulo.attributes.nombre_corto}</div>
 	</div>
 </button>
