@@ -112,25 +112,7 @@
 {/each}
 
 {#each capitulos as capitulo}
-	<h2
-		class="text-2xl md:text-3xl pl-3 md:pl-6 text-white font-bold mt-6"
-		id={`cat${capitulo.attributes.Nombre}`}
-	>
-		{capitulo.attributes.Nombre}
-	</h2>
 	{#each capitulo.attributes.sub_capitulos.data as subCapitulo}
-		<div
-			class="pl-3 md:pl-6 flex items-center mt-4 mb-2"
-			id={`subcat${subCapitulo.attributes.Nombre}`}
-		>
-			<span
-				class="w-7 h-7 inline-block flex-none shadow-3xl rounded-full"
-				style={`background-color: #${subCapitulo.attributes.hex_color}`}
-			/>
-			<h3 class="text-xl md:text-2xl text-white pl-3">
-				{subCapitulo.attributes.Nombre}
-			</h3>
-		</div>
 		<div class="pl-3 md:pl-6 mb-6 md:mb-10">
 			{#each sortedArticulos(subCapitulo.attributes.articulos.data) as articulo}
 				<Articulo {articulo} hex_color={subCapitulo.attributes.hex_color} />

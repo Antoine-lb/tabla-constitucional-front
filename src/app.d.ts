@@ -36,3 +36,18 @@ type RawArticulo = {
 		updatedAt: string;
 	};
 };
+
+type RawArticuloWithColor = {
+	id: number;
+	attributes: {
+		contenido: string;
+		nombre_corto: string;
+		numero_de_articulo: number;
+		numero_de_incisos: number;
+		pagina: number;
+		simbolo: string;
+		createdAt: string;
+		updatedAt: string;
+		hex_color: string;
+	};
+};
