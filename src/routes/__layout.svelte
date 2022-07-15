@@ -24,9 +24,9 @@
 	</div>
 	<p class="text-white mb-5">
 		Este sitio web fue construido por
-		<a class="underline" href="www.linkedin.com/in/xavier-lb">Xavier</a>
+		<a class="underline" href="https://www.linkedin.com/in/xavier-lb/">Xavier</a>
 		y
-		<a class="underline" href="www.linkedin.com/in/antoine-lb">Antoine</a>
+		<a class="underline" href="https://www.linkedin.com/in/antoine-lb/">Antoine</a>
 	</p>
 	<p class="text-white mb-5">
 		Para toda información con respecto a la página contactar <a

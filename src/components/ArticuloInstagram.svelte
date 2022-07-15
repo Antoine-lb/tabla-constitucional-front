@@ -51,30 +51,32 @@
 	}
 </script>
 
-{#if !openModalByDefault}
-	<button class="inline-block m-2" on:click={openModal}>
-		<div
-			class=" flex flex-col rounded-lg p-2 w-[140px] h-[140px] articulo-animacion shadow-3xl shadow-custom m-1 cursor-pointer"
-			style={`background-color: #${hex_color};`}
-		>
-			<div class="flex place-content-between">
-				<span>
-					{articulo.attributes.numero_de_articulo}<span class="text-xs"
-						>({articulo.attributes.numero_de_incisos})
+<div class="border-solid border-2 border-purple-900 inline-block ">
+	{#if !openModalByDefault}
+		<button class="inline-block m-2" on:click={openModal}>
+			<div
+				class=" flex flex-col rounded-lg p-2 w-[140px] h-[140px] articulo-animacion shadow-3xl shadow-custom m-1 cursor-pointer"
+				style={`background-color: #${hex_color};`}
+			>
+				<div class="flex place-content-between">
+					<span>
+						{articulo.attributes.numero_de_articulo}<span class="text-xs"
+							>({articulo.attributes.numero_de_incisos})
+						</span>
 					</span>
-				</span>
-				<span>p.{articulo.attributes.pagina}</span>
+					<span>p.{articulo.attributes.pagina}</span>
+				</div>
+				<div class="m-auto flex">
+					<div class="text-5xl">{simbolo}</div>
+					{#if simboloIndice}
+						<div class="text-lg">{simboloIndice}</div>
+					{/if}
+				</div>
+				<div class="m-auto text-xs nombre_corto">{articulo.attributes.nombre_corto}</div>
 			</div>
-			<div class="m-auto flex">
-				<div class="text-5xl">{simbolo}</div>
-				{#if simboloIndice}
-					<div class="text-lg">{simboloIndice}</div>
-				{/if}
-			</div>
-			<div class="m-auto text-xs nombre_corto">{articulo.attributes.nombre_corto}</div>
-		</div>
-	</button>
-{/if}
+		</button>
+	{/if}
+</div>
 
 <style>
 	.nombre_corto {
