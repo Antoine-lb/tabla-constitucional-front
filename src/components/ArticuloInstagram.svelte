@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { readHistory } from '../stores/readHistoryStore';
 	import { getContext } from 'svelte';
 	import Popup from './Popup.svelte';
@@ -40,14 +41,31 @@
 		simboloIndice = articulo.attributes.simbolo[2];
 		simbolo = simbolo.slice(0, -1);
 	}
+	let contenido = articulo.attributes.contenido;
+	let verMasEnLaPagina = '';
+
+	if (articulo.attributes.contenido.length > 1800) {
+		contenido = contenido.substring(0, 1800);
+		contenido += '...';
+		verMasEnLaPagina = `Se nos acabo el espacio en insta, pueden ver el resto en la pagina:
+tabla-constitucional.cl/articulo-${articulo.attributes.numero_de_articulo}
+		`;
+	}
+
 	let instaValue = `#Artículo${articulo.attributes.numero_de_articulo}
 tabla-constitucional.cl/articulo-${articulo.attributes.numero_de_articulo}
 
 ${articulo.attributes.nombre_corto} (p.${articulo.attributes.pagina})
-${articulo.attributes.contenido}
+${contenido}
 
+${verMasEnLaPagina}
 #NC #TablaConstitucional
 `;
+
+	let showCopyButton = false;
+	onMount(async () => {
+		showCopyButton = true;
+	});
 </script>
 
 <div class="border-solid border-2 border-purple-900 inline-block ">
@@ -76,10 +94,13 @@ ${articulo.attributes.contenido}
 </div>
 
 <textarea class="w-full mt-32 h-60" value={instaValue} />
-<button
-	class="p-5 bg-sky-300 rounded-full m-5"
-	on:click={() => navigator.clipboard.writeText(instaValue)}>Copiar</button
->
+
+{#if showCopyButton}
+	<button
+		class="p-5 bg-sky-300 hover:bg-sky-700 rounded-full m-5 font-bold"
+		on:click={() => navigator.clipboard.writeText(instaValue)}>Copiar</button
+	>
+{/if}
 
 <style>
 	.nombre_corto {

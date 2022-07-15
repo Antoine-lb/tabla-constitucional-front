@@ -37,7 +37,7 @@
 {#if article !== undefined}
 	<Articulo articulo={article} hex_color={article.attributes.hex_color} />
 
-	<div class="mt-40 flex place-content-between">
+	<div class="mt-20 flex place-content-between">
 		<a
 			class="bg-white p-6 rounded-md text-xl font-bold text-purple-900 m-10"
 			target="_self"
