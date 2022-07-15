@@ -10,7 +10,7 @@
 
 	if (browser) {
 		const url = `articulo-${articulo.attributes.numero_de_articulo}`;
-		// history.pushState({}, '', url);
+		history.pushState({}, '', url);
 	}
 </script>
 
