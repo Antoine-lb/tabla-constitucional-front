@@ -69,7 +69,7 @@ ${verMasEnLaPagina}
 </script>
 
 <div class="border-solid border-2 border-purple-900 inline-block ">
-	<button class="inline-block m-2" on:click={openModal}>
+	<button class="inline-block m-6" on:click={openModal}>
 		<div
 			class=" flex flex-col rounded-lg p-2 w-[140px] h-[140px] articulo-animacion shadow-3xl shadow-custom m-1 cursor-pointer"
 			style={`background-color: #${hex_color};`}
