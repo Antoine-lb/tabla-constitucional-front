@@ -1,12 +1,14 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { readHistory } from '../stores/readHistoryStore';
-
 	import { getContext } from 'svelte';
 	import Popup from './Popup.svelte';
 	const { open } = getContext('simple-modal');
+	import { browser } from '$app/env';
 
+	export let openModalByDefault: boolean = false; //dont add article and open modal by default
 	export let articulo: RawArticulo;
-	export let hex_color: string;
+	export let hex_color: string = 'ffffff';
 
 	readHistory.subscribe((value) => {
 		if (value.find((val) => val === articulo.id)) {
@@ -16,30 +18,63 @@
 		}
 	});
 
-	const showSurprise = () => {
+	const openModal = () => {
 		if (!$readHistory.find((val) => val === articulo.id)) {
 			$readHistory = [...$readHistory, articulo.id];
 		}
-		open(Popup, { articulo: articulo });
+		open(
+			Popup,
+			{ articulo: articulo },
+			{ closeButton: false },
+			{
+				onClose: () => {
+					if (browser) {
+						history.pushState({}, '', '/');
+					}
+				}
+			}
+		);
 	};
+
+	// had to add two onMount (in Articulo.svelte and [articleUrl].svlete page) so that the modal could open, not clean, but works
+	onMount(async () => {
+		if (openModalByDefault) {
+			openModal();
+		}
+	});
+
+	let simboloIndice: string | null = null;
+	let simbolo: string = articulo.attributes.simbolo;
+	if (simbolo.length === 3 && simbolo[2] !== 'r') {
+		simboloIndice = articulo.attributes.simbolo[2];
+		simbolo = simbolo.slice(0, -1);
+	}
 </script>
 
-<button class="m-2 block" on:click={showSurprise}>
-	<div
-		class=" flex flex-col rounded-lg p-2 w-[140px] h-[140px] articulo-animacion shadow-custom shadow-3xl m-1 cursor-pointer"
-		style={`background-color: #${hex_color};`}
-	>
-		<div class="flex place-content-between">
-			<span
-				>{articulo.attributes.numero_de_articulo}
-				<span class="text-xs">({articulo.attributes.numero_de_incisos})</span></span
-			>
-			<span>p.{articulo.attributes.pagina}</span>
+{#if !openModalByDefault}
+	<button class="inline-block m-2" on:click={openModal}>
+		<div
+			class=" flex flex-col rounded-lg p-2 w-[140px] h-[140px] articulo-animacion shadow-3xl shadow-custom m-1 cursor-pointer"
+			style={`background-color: #${hex_color};`}
+		>
+			<div class="flex place-content-between">
+				<span>
+					{articulo.attributes.numero_de_articulo}<span class="text-xs"
+						>({articulo.attributes.numero_de_incisos})
+					</span>
+				</span>
+				<span>p.{articulo.attributes.pagina}</span>
+			</div>
+			<div class="m-auto flex">
+				<div class="text-5xl">{simbolo}</div>
+				{#if simboloIndice}
+					<div class="text-lg">{simboloIndice}</div>
+				{/if}
+			</div>
+			<div class="m-auto text-xs nombre_corto">{articulo.attributes.nombre_corto}</div>
 		</div>
-		<div class="m-auto text-6xl">{articulo.attributes.simbolo}</div>
-		<div class="m-auto text-xs nombre_corto">{articulo.attributes.nombre_corto}</div>
-	</div>
-</button>
+	</button>
+{/if}
 
 <style>
 	.nombre_corto {
