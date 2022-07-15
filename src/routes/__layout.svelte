@@ -10,23 +10,28 @@
 </div>
 
 <footer class="bg-[#ffffff57] p-10 text-lg mt-20">
-	<div class="text-white">
-		Inspirado del tweet de <a
-			class="underline"
-			href="https://twitter.com/diegotherium/status/1546310354392711168/photo/2">@diegotherium</a
-		>
-	</div>
-	<p class="text-white">
+	<p class="text-white mb-5">
 		Para ver el documento oficial (en PDF): <a
 			class="underline"
 			href="https://www.chileconvencion.cl/wp-content/uploads/2022/07/Texto-CPR-2022.pdf"
 			>www.chileconvencion.cl</a
 		>
 	</p>
-	<p class="text-white">
+	<div class="text-white mb-5">
+		La página fue inspirada del <a class="underline" href="https://bit.ly/3RGuciW">poster</a>
+		diseñado por
+		<a class="underline" href="https://twitter.com/diegotherium">Diego (@diegotherium)</a>
+	</div>
+	<p class="text-white mb-5">
+		Este sitio web fue construido por
+		<a class="underline" href="www.linkedin.com/in/xavier-lb">Xavier</a>
+		y
+		<a class="underline" href="www.linkedin.com/in/antoine-lb">Antoine</a>
+	</p>
+	<p class="text-white mb-5">
 		Para toda información con respecto a la página contactar <a
 			class="underline"
-			href="https://twitter.com/XCMLBG">@XCMLBG</a
+			href="https://twitter.com/XCMLBG">Xavier (@XCMLB)</a
 		>
 	</p>
 	<p class="text-white">
@@ -35,5 +40,4 @@
 			>tabla-constitucional-front</a
 		>
 	</p>
-	<p class="text-white pt-10">®CallateSchalper 2022</p>
 </footer>

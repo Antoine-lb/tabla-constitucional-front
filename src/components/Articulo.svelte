@@ -42,6 +42,13 @@
 			openModal();
 		}
 	});
+
+	let simboloIndice: string | null = null;
+	let simbolo: string = articulo.attributes.simbolo;
+	if (simbolo.length === 3 && simbolo[2] !== 'r') {
+		simboloIndice = articulo.attributes.simbolo[2];
+		simbolo = simbolo.slice(0, -1);
+	}
 </script>
 
 {#if !openModalByDefault}
@@ -51,13 +58,19 @@
 			style={`background-color: #${hex_color};`}
 		>
 			<div class="flex place-content-between">
-				<span
-					>{articulo.attributes.numero_de_articulo}
-					<span class="text-xs">({articulo.attributes.numero_de_incisos})</span></span
-				>
+				<span>
+					{articulo.attributes.numero_de_articulo}<span class="text-xs"
+						>({articulo.attributes.numero_de_incisos})
+					</span>
+				</span>
 				<span>p.{articulo.attributes.pagina}</span>
 			</div>
-			<div class="m-auto text-5xl">{articulo.attributes.simbolo}</div>
+			<div class="m-auto flex">
+				<div class="text-5xl">{simbolo}</div>
+				{#if simboloIndice}
+					<div class="text-lg">{simboloIndice}</div>
+				{/if}
+			</div>
 			<div class="m-auto text-xs nombre_corto">{articulo.attributes.nombre_corto}</div>
 		</div>
 	</button>
