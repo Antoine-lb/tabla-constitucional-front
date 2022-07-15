@@ -48,7 +48,32 @@
 	});
 </script>
 
-<!-- {$page.params.articuloUrl} -->
+<svelte:head>
+	{#if article !== undefined}
+		<!-- Primary Meta Tags -->
+		<title>Tabla Periódica Constitucional 🇨🇱</title>
+		<meta name="title" content="Tabla Periódica Constitucional 🇨🇱" />
+		<meta name="description" content="La nueva constitución en una tabla periódica!" />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://tabla-constitucional.cl/" />
+		<meta property="og:title" content="Tabla Periódica Constitucional 🇨🇱" />
+		<meta property="og:description" content="La nueva constitución en una tabla periódica!" />
+		<meta property="og:image" content="https://tabla-constitucional.cl/como-funciona.jpg" />
+
+		<!-- Twitter -->
+		<meta
+			property="twitter:card"
+			content="La nueva constitución en una tabla periódica para hacerla más didáctica"
+		/>
+		<meta property="twitter:url" content="https://tabla-constitucional.cl/" />
+		<meta property="twitter:title" content="Tabla Periódica Constitucional 🇨🇱" />
+		<meta property="twitter:description" content="La nueva constitución en una tabla periódica!" />
+		<meta property="twitter:image" content="https://tabla-constitucional.cl/como-funciona.jpg" />
+	{/if}
+</svelte:head>
+
 {#if article === undefined}
 	<h1 class="text-white text-4xl  mt-10 ml-5">No encontramos el artículo que buscas 🫤</h1>
 
