@@ -1,19 +1,5 @@
-<script lang="ts">
-	import { page } from '$app/stores';
-	import { browser } from '$app/env';
-	import { onMount } from 'svelte';
-
-	import Home from '../components/Home.svelte';
-	import Articulo from '../components/Articulo.svelte';
-	import data from '../data/data.json';
-	let capitulos: RawCapitulo[];
-	let article: RawArticuloWithColor | undefined;
-	const urlSplited: string[] = $page.params.articuloUrl.split('-');
-
-	capitulos = data.data;
-	if (urlSplited[1]) {
-		article = findArticle(capitulos, parseInt(urlSplited[1]));
-	}
+<script context="module" lang="ts">
+	export const prerender = true;
 
 	function findArticle(capitulos: RawCapitulo[], id: number) {
 		const articles = getAllArticles(capitulos);
@@ -35,6 +21,37 @@
 		);
 		return articles;
 	}
+	export async function load({ params, fetch }) {
+		const url = `https://tabla-constitucional.cl/data.json`;
+		const response = await fetch(url);
+		const res = await response.json();
+
+		let article: RawArticuloWithColor | undefined;
+
+		const urlSplited: string[] = params.articuloUrl.split('-');
+		if (urlSplited[1]) {
+			article = findArticle(res.data, parseInt(urlSplited[1]));
+		}
+		return {
+			status: response.status,
+			props: {
+				article: response.ok && article,
+				capitulos: res.data
+			}
+		};
+	}
+</script>
+
+<script lang="ts">
+	import { browser } from '$app/env';
+	import { onMount } from 'svelte';
+
+	import Home from '../components/Home.svelte';
+	import Articulo from '../components/Articulo.svelte';
+	// import data from '../data/data.json';
+	// import { data } from '../data/data.js';
+	export let article;
+	export let capitulos;
 
 	function redirectToIndex() {
 		if (browser) {
