@@ -35,12 +35,25 @@
 		);
 	};
 
+	function isNumber(char: string) {
+		if (typeof char !== 'string') {
+			return false;
+		}
+
+		if (char.trim() === '') {
+			return false;
+		}
+
+		return !isNaN(char);
+	}
+
 	let simboloIndice: string | null = null;
 	let simbolo: string = articulo.attributes.simbolo;
-	if (simbolo.length === 3 && simbolo[2] !== 'r') {
-		simboloIndice = articulo.attributes.simbolo[2];
+	if (isNumber(simbolo[simbolo.length - 1])) {
+		simboloIndice = articulo.attributes.simbolo[simbolo.length - 1];
 		simbolo = simbolo.slice(0, -1);
 	}
+
 	let contenido = articulo.attributes.contenido;
 	let verMasEnLaPagina = '';
 

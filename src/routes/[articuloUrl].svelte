@@ -58,7 +58,7 @@
 		displayArticle = true;
 	});
 
-	let meta_title = `Artículo #${article?.attributes.numero_de_articulo} - ${article?.attributes.nombre_corto}(${article?.attributes.pagina})`;
+	let meta_title = `Artículo #${article?.attributes.numero_de_articulo} - ${article?.attributes.nombre_corto} (p. ${article?.attributes.pagina})`;
 	// let meta_description = `${article?.attributes.contenido}`;
 	let meta_description = meta_title;
 	let meta_url = `https://tabla-constitucional.cl/articulo-${article?.attributes.numero_de_articulo}`;
