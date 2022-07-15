@@ -93,6 +93,7 @@ ${verMasEnLaPagina}
 	</button>
 </div>
 
+<!-- 
 <textarea class="w-full mt-32 h-60" value={instaValue} />
 
 {#if showCopyButton}
@@ -100,8 +101,7 @@ ${verMasEnLaPagina}
 		class="p-5 bg-sky-300 hover:bg-sky-700 rounded-full m-5 font-bold"
 		on:click={() => navigator.clipboard.writeText(instaValue)}>Copiar</button
 	>
-{/if}
-
+{/if} -->
 <style>
 	.nombre_corto {
 		display: -webkit-box;
