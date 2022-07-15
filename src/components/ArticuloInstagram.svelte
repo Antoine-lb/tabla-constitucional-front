@@ -54,7 +54,7 @@
 		simbolo = simbolo.slice(0, -1);
 	}
 
-	let contenido = articulo.attributes.contenido;
+	let contenido = articulo.attributes.contenido.replace(/(\n)/gm, '');
 	let verMasEnLaPagina = '';
 
 	if (articulo.attributes.contenido.length > 1800) {
