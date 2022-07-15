@@ -53,19 +53,14 @@
 	export let article;
 	export let capitulos;
 
-	function redirectToIndex() {
-		if (browser) {
-			window?.location?.replace('/');
-		}
-	}
-
 	let displayArticle: boolean = false;
 	onMount(async () => {
 		displayArticle = true;
 	});
 
 	let meta_title = `Artículo #${article?.attributes.numero_de_articulo} - ${article?.attributes.nombre_corto}(${article?.attributes.pagina})`;
-	let meta_description = `${article?.attributes.contenido}`;
+	// let meta_description = `${article?.attributes.contenido}`;
+	let meta_description = meta_title;
 	let meta_url = `https://tabla-constitucional.cl/articulo-${article?.attributes.numero_de_articulo}`;
 	let met_image = `https://tabla-constitucional.cl/articulo.png`;
 </script>
@@ -97,8 +92,13 @@
 	<h1 class="text-white text-4xl  mt-10 ml-5">No encontramos el artículo que buscas 🫤</h1>
 
 	<div class="flex justify-center mt-10">
-		<button class="bg-white text-3xl rounded p-5" on:click={redirectToIndex}
-			>⬅️ Volver al inicio</button
+		<button
+			class="bg-white text-3xl rounded p-5"
+			on:click={() => {
+				if (browser) {
+					window?.location?.replace('/');
+				}
+			}}>⬅️ Volver al inicio</button
 		>
 	</div>
 {:else}
