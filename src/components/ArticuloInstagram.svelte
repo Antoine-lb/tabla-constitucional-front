@@ -72,7 +72,7 @@ ${articulo.attributes.nombre_corto} (p.${articulo.attributes.pagina})
 ${contenido}
 
 ${verMasEnLaPagina}
-#NC #TablaConstitucional
+#NC #TablaConstitucional #SinArticuloNoHayDebate
 `;
 
 	let showCopyButton = false;

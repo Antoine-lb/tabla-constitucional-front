@@ -5,8 +5,7 @@
 	import { getContext } from 'svelte';
 
 	const { close } = getContext('simple-modal');
-
-	const splited_content = articulo.attributes.contenido.split(/[0-9].\s/);
+	const splited_content = articulo.attributes.contenido.split(/[0-9]+.\s/);
 
 	if (browser) {
 		const url = `articulo-${articulo.attributes.numero_de_articulo}`;
