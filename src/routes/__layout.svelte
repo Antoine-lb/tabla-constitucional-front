@@ -47,7 +47,7 @@
 	</p>
 
 	<p class="text-white text-2xl font-bold">✉️ Contacto</p>
-	<p class="text-white mb-5">
+	<p class="text-white">
 		Para toda información con respecto a la página contactar <a
 			class="underline"
 			href="https://twitter.com/XCMLBG">Xavier (@XCMLB)</a
@@ -56,6 +56,9 @@
 		<a class="underline" href="https://www.instagram.com/tabla_constitucional/"
 			>Instagram (@tabla_constitucional)</a
 		>
+	</p>
+	<p class="text-white mb-5">
+		Si tienen problemas para abrir los articulos intente refrescar la pagina
 	</p>
 
 	<p class="text-white text-2xl font-bold">💻 Otros</p>
