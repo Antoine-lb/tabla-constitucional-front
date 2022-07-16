@@ -37,14 +37,14 @@
 {#if article !== undefined}
 	<Articulo articulo={article} hex_color={article.attributes.hex_color} />
 
-	<div class=" flex place-content-between">
-		<a
+	<div class="flex place-content-between">
+<!--		<a
 			class="bg-white p-6 rounded-md text-xl font-bold text-purple-900 m-10"
 			target="_self"
 			href={`/i/articulo-${article.attributes.numero_de_articulo - 1}`}
 		>
 			Anterior</a
-		>
+		> -->
 		<a
 			class="bg-white p-6 rounded-md text-xl font-bold text-purple-900 m-10"
 			target="_self"
