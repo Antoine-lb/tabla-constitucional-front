@@ -65,28 +65,25 @@
 	let met_image = `https://tabla-constitucional.cl/articulo.png`;
 </script>
 
-<svelte:head>
+<!-- <svelte:head>
 	{#if article !== undefined}
-		<!-- Primary Meta Tags -->
 		<title>{meta_title}</title>
 		<meta name="title" content={meta_title} />
 		<meta name="description" content={meta_description} />
 
-		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={meta_url} />
 		<meta property="og:title" content={meta_title} />
 		<meta property="og:description" content={meta_description} />
 		<meta property="og:image" content={met_image} />
 
-		<!-- Twitter -->
 		<meta property="twitter:card" content={meta_description} />
 		<meta property="twitter:url" content={meta_url} />
 		<meta property="twitter:title" content={meta_title} />
 		<meta property="twitter:description" content={meta_description} />
 		<meta property="twitter:image" content={met_image} />
 	{/if}
-</svelte:head>
+</svelte:head> -->
 
 {#if article === undefined}
 	<h1 class="text-white text-4xl  mt-10 ml-5">No encontramos el artículo que buscas 🫤</h1>
