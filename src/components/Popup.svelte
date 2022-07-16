@@ -12,8 +12,7 @@
 	if (browser) {
 		history.pushState({}, '', url);
 	}
-	const fullTitle = `Artículo %23${articulo.attributes.numero_de_articulo} - ${articulo.attributes.nombre_corto}%0Ahttps://tabla-constitucional.cl/${url}
-`;
+	const fullTitle = `Artículo %23${articulo.attributes.numero_de_articulo} - ${articulo.attributes.nombre_corto}%0Ahttps://tabla-constitucional.cl/${url}%0A`;
 </script>
 
 <button
@@ -49,7 +48,7 @@
 
 <p class="font-bold text-md mt-10">Página: {articulo.attributes.pagina}</p>
 
-<div class="mt-5">
+<!-- <div class="mt-5">
 	<a
 		href={`https://twitter.com/intent/tweet?text=${fullTitle}`}
 		target="blanc"
@@ -71,4 +70,4 @@
 		>
 		Comparte el Artículo #{articulo.attributes.numero_de_articulo} en Twitter
 	</a>
-</div>
+</div> -->

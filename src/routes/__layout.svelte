@@ -42,15 +42,16 @@
 	<p class="text-white mb-5">
 		Este sitio web fue construido por
 		<a class="underline" href="https://www.linkedin.com/in/xavier-lb/">Xavier</a>
+		<a class="underline" href="https://twitter.com/XCMLBG">(@XCMLBG)</a>
 		y
 		<a class="underline" href="https://www.linkedin.com/in/antoine-lb/">Antoine</a>
 	</p>
 
 	<p class="text-white text-2xl font-bold">✉️ Contacto</p>
 	<p class="text-white">
-		Para toda información con respecto a la página contactar <a
+		Para toda información con respecto a la página contactarnos por <a
 			class="underline"
-			href="https://twitter.com/XCMLBG">Xavier (@XCMLB)</a
+			href="https://twitter.com/Tabla_C">Twitter (@Tabla_C)</a
 		>
 		o a través de nuestro
 		<a class="underline" href="https://www.instagram.com/tabla_constitucional/"
