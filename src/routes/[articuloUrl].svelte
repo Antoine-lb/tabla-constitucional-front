@@ -96,7 +96,7 @@
 	<meta property="og:url" content="https://tabla-constitucional.cl/articulo-44" />
 	<meta property="og:title" content="Articulo #44" />
 	<meta property="og:description" content="Descripcion del articulo" />
-	<meta property="og:image" content="https://tabla-constitucional.cl/articulo.png" />
+	<meta property="og:image" content="https://tabla-constitucional.cl/articulo.jpg" />
 
 	<!-- Twitter -->
 	<meta property="twitter:card" content="summary_large_image" />
@@ -104,7 +104,7 @@
 	<meta property="twitter:url" content="https://tabla-constitucional.cl/articulo-44" />
 	<meta property="twitter:title" content="Articulo #44" />
 	<meta property="twitter:description" content="Descripcion del articulo" />
-	<meta property="twitter:image" content="https://tabla-constitucional.cl/articulo.png" />
+	<meta property="twitter:image" content="https://tabla-constitucional.cl/articulo.jpg" />
 	<meta
 		property="twitter:image:alt"
 		content="Elemento de la tabla periodica que representa un articulo de la nueva constitución Chilena"
