@@ -55,6 +55,16 @@
 	}
 
 	let contenido = articulo.attributes.contenido.replace(/(\n)/gm, '');
+	const splited_content = contenido.split(/([0-9]+.\s)/);
+	contenido = '';
+	splited_content.forEach((val, index) => {
+		if (index % 2) {
+			contenido += val;
+		} else {
+			contenido += val + '\n';
+		}
+	});
+
 	let verMasEnLaPagina = '';
 
 	if (articulo.attributes.contenido.length > 1800) {
