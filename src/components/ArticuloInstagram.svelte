@@ -54,7 +54,7 @@
 		simbolo = simbolo.slice(0, -1);
 	}
 
-	let contenido = articulo.attributes.contenido.replace(/(\n)/gm, '');
+	let contenido = articulo.attributes.contenido.replace(/(\n)/gm, ' ');
 	const splited_content = contenido.split(/([0-9]+.\s)/);
 	contenido = '';
 	splited_content.forEach((val, index) => {
