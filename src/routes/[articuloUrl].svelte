@@ -85,6 +85,32 @@
 	{/if}
 </svelte:head> -->
 
+<svelte:head>
+	<!-- Primary Meta Tags -->
+	<title>Articulo #44</title>
+	<meta name="title" content="Articulo #44" />
+	<meta name="description" content="Descripcion del articulo" />
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://tabla-constitucional.cl/articulo-44" />
+	<meta property="og:title" content="Articulo #44" />
+	<meta property="og:description" content="Descripcion del articulo" />
+	<meta property="og:image" content="https://tabla-constitucional.cl/articulo.png" />
+
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image" />
+	<meta property="twitter:site" content="@Tabla_C" />
+	<meta property="twitter:url" content="https://tabla-constitucional.cl/articulo-44" />
+	<meta property="twitter:title" content="Articulo #44" />
+	<meta property="twitter:description" content="Descripcion del articulo" />
+	<meta property="twitter:image" content="https://tabla-constitucional.cl/articulo.png" />
+	<meta
+		property="twitter:image:alt"
+		content="Elemento de la tabla periodica que representa un articulo de la nueva constitución Chilena"
+	/>
+</svelte:head>
+
 {#if article === undefined}
 	<h1 class="text-white text-4xl  mt-10 ml-5">No encontramos el artículo que buscas 🫤</h1>
 
