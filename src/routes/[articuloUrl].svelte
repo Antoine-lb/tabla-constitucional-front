@@ -64,7 +64,7 @@
 	meta_description = meta_description.substring(0, 150);
 	meta_description += '...';
 	let meta_url = `https://tabla-constitucional.cl/articulo-${article?.attributes.numero_de_articulo}`;
-	let met_image = `https://tabla-constitucional.cl/articulo.jpg`;
+	let met_image = `https://tabla-constitucional.cl/articulos/tw-picture-articulo-${article?.attributes.numero_de_articulo}.jpg`;
 </script>
 
 <svelte:head>
