@@ -92,7 +92,7 @@ ${verMasEnLaPagina}
 </script>
 
 <div class="border-solid border-2 border-purple-900 inline-block ">
-	<button class="inline-block m-6" on:click={openModal}>
+	<button class="inline-block m-44" on:click={openModal}>
 		<div
 			class=" flex flex-col rounded-lg p-2 w-[140px] h-[140px] articulo-animacion shadow-3xl shadow-custom m-1 cursor-pointer"
 			style={`background-color: #${hex_color};`}
@@ -111,11 +111,11 @@ ${verMasEnLaPagina}
 					<div class="text-lg">{simboloIndice}</div>
 				{/if}
 			</div>
-			<div class="m-auto text-xs nombre_corto">{articulo.attributes.nombre_corto}</div>
+			<div class="m-auto leading-4 text-sm nombre_corto">{articulo.attributes.nombre_corto}</div>
 		</div>
 	</button>
 </div>
-
+<!--
 <textarea class="w-full mt-32 h-60" value={instaValue} />
 
 {#if showCopyButton}
@@ -123,7 +123,7 @@ ${verMasEnLaPagina}
 		class="p-5 bg-sky-300 hover:bg-sky-700 rounded-full m-5 font-bold"
 		on:click={() => navigator.clipboard.writeText(instaValue)}>Copiar</button
 	>
-{/if}
+{/if} -->
 
 <style>
 	.nombre_corto {
