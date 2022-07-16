@@ -62,10 +62,10 @@
 	// let meta_description = `${article?.attributes.contenido}`;
 	let meta_description = meta_title;
 	let meta_url = `https://tabla-constitucional.cl/articulo-${article?.attributes.numero_de_articulo}`;
-	let met_image = `https://tabla-constitucional.cl/articulo.png`;
+	let met_image = `https://tabla-constitucional.cl/articulo.jpg`;
 </script>
 
-<!-- <svelte:head>
+<svelte:head>
 	{#if article !== undefined}
 		<title>{meta_title}</title>
 		<meta name="title" content={meta_title} />
@@ -77,39 +77,42 @@
 		<meta property="og:description" content={meta_description} />
 		<meta property="og:image" content={met_image} />
 
-		<meta property="twitter:card" content={meta_description} />
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:site" content="@Tabla_C" />
+
 		<meta property="twitter:url" content={meta_url} />
 		<meta property="twitter:title" content={meta_title} />
 		<meta property="twitter:description" content={meta_description} />
 		<meta property="twitter:image" content={met_image} />
+		<meta
+			property="twitter:image:alt"
+			content="Elemento de la tabla periodica que representa un articulo de la nueva constitución Chilena"
+		/>
 	{/if}
-</svelte:head> -->
+</svelte:head>
 
-<svelte:head>
-	<!-- Primary Meta Tags -->
-	<title>Articulo #44</title>
-	<meta name="title" content="Articulo #44" />
+<!-- <svelte:head>
+	<title>Articulo #78</title>
+	<meta name="title" content="Articulo #78" />
 	<meta name="description" content="Descripcion del articulo" />
 
-	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://tabla-constitucional.cl/articulo-44" />
-	<meta property="og:title" content="Articulo #44" />
+	<meta property="og:url" content="https://tabla-constitucional.cl/articulo-78" />
+	<meta property="og:title" content="Articulo #78" />
 	<meta property="og:description" content="Descripcion del articulo" />
 	<meta property="og:image" content="https://tabla-constitucional.cl/articulo.jpg" />
 
-	<!-- Twitter -->
 	<meta property="twitter:card" content="summary_large_image" />
 	<meta property="twitter:site" content="@Tabla_C" />
-	<meta property="twitter:url" content="https://tabla-constitucional.cl/articulo-44" />
-	<meta property="twitter:title" content="Articulo #44" />
+	<meta property="twitter:url" content="https://tabla-constitucional.cl/articulo-78" />
+	<meta property="twitter:title" content="Articulo #78" />
 	<meta property="twitter:description" content="Descripcion del articulo" />
 	<meta property="twitter:image" content="https://tabla-constitucional.cl/articulo.jpg" />
 	<meta
 		property="twitter:image:alt"
 		content="Elemento de la tabla periodica que representa un articulo de la nueva constitución Chilena"
 	/>
-</svelte:head>
+</svelte:head> -->
 
 {#if article === undefined}
 	<h1 class="text-white text-4xl  mt-10 ml-5">No encontramos el artículo que buscas 🫤</h1>
