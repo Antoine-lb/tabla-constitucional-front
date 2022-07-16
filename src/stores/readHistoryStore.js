@@ -1,5 +1,3 @@
-import { writable } from 'svelte/store';
-// import { persist, localStorage } from '@macfja/svelte-persistent-store';
+import { localStore } from './localStorageStore';
 
-// export const readHistory = persist(writable([]), localStorage(), 'readHistory');
-export const readHistory = writable([]);
+export const readHistory = localStore('history', []);
