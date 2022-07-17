@@ -65,7 +65,8 @@
 	meta_description += '...';
 	let meta_url = `https://tabla-constitucional.cl/articulo-${article?.attributes.numero_de_articulo}`;
 	// let met_image = `https://tabla-constitucional.cl/articulos/tw-picture-articulo-${article?.attributes.numero_de_articulo}.jpg`;
-	let met_image = `https://tabla-constitucional.cl/articulos/articulo.jpg`;
+	let met_image = `https://tabla-constitucional.cl/articulos/tw-picture-articulo-5.jpg`;
+	// let met_image = `https://tabla-constitucional.cl/articulos/articulo.jpg`;
 </script>
 
 <svelte:head>
