@@ -1,6 +1,12 @@
 <script>
 	import Modal from 'svelte-simple-modal';
 	import '../app.css';
+
+	import * as Sentry from '@sentry/browser';
+
+	Sentry.init({
+		dsn: 'https://2a5c38331bfd46298d9d66cc7e29796c@o1322081.ingest.sentry.io/6579142'
+	});
 </script>
 
 <div>
