@@ -19,7 +19,7 @@
 	});
 
 	const openModal = () => {
-		if (!$readHistory.find((val) => val === articulo.id)) {
+		if (!$readHistory?.find((val) => val === articulo.id)) {
 			$readHistory = [...$readHistory, articulo.id];
 		}
 		open(
