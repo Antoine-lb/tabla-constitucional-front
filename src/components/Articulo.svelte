@@ -11,7 +11,7 @@
 	export let hex_color: string = 'ffffff';
 
 	readHistory.subscribe((value) => {
-		if (value.find((val) => val === articulo.id)) {
+		if (value?.find((val) => val === articulo.id)) {
 			if (hex_color.length <= 6) {
 				hex_color = `${hex_color}88`;
 			}
