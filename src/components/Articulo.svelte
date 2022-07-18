@@ -31,7 +31,7 @@
 			}
 		} catch (error) {
 			Sentry.captureException(error);
-			Sentry.captureException(new Error('handled error for readHistory (2)'));
+			Sentry.captureException(new Error('handled error for readHistory (2) v2'));
 		}
 		open(
 			Popup,
