@@ -2,7 +2,7 @@
 
 wget "https://tabla-constitucional.herokuapp.com/api/capitulos?populate[sub_capitulos][populate][0]=articulos" -O data.json
 
-cp data.json srcs/data
+cp data.json src/data
 
 if [ $? -ne 0 ]; then
     echo " 🛑 Error: command failed."
