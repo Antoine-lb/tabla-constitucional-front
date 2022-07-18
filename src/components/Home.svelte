@@ -45,7 +45,8 @@ https://tabla-constitucional.cl/
 <p class="pl-3 md:pl-6 text-white text-lg">
 	En esta página se encuentran todos los artículos de la <a
 		href="https://www.chileconvencion.cl/"
-		class="underline">nueva constitución</a
+		class="underline"
+		target="blanc">nueva constitución</a
 	> separados por capítulos y subcapítulos. Está animado como una tabla periódica y separada en colores
 	para hacerla mas entretenida.
 </p>
