@@ -26,6 +26,7 @@
 	<meta property="og:title" content="Tabla Periódica Constitucional 🇨🇱" />
 	<meta property="og:description" content="La nueva constitución en una tabla periódica!" />
 	<meta property="og:image" content="https://tabla-constitucional.cl/como-funciona.jpg" />
+	<meta property="og:locale" content="es_CL" />
 
 	<!-- Twitter -->
 	<meta property="twitter:card" content="summary_large_image" />
