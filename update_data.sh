@@ -14,7 +14,7 @@ fi
 mv data.json static
 
 if [ $? -ne 0 ]; then
-    >&2 echo " 🛑 Error: command failed."
+    echo " 🛑 Error: command failed."
     exit $exit_code
 else
 	echo "Replaced in srcs/data. 👍"
