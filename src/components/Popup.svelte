@@ -67,7 +67,7 @@ https://tabla-constitucional.cl/${url}
 >
 
 <p class="text-lg font-bold mt-10">Comparte el link de este artículo:</p>
-<div class="mt-5 md:flex">
+<div class="mt-5 ">
 	<!-- TWITTER -->
 	<div class="inline-block">
 		<a
