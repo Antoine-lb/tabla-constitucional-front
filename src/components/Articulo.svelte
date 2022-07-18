@@ -13,7 +13,6 @@
 
 	try {
 		readHistory.subscribe((value) => {
-			console.log('Array.isArray(value)', Array.isArray(value));
 			if (Array.isArray(value) && value?.find((val) => val === articulo.id)) {
 				if (hex_color.length <= 6) {
 					hex_color = `${hex_color}88`;
@@ -27,7 +26,7 @@
 
 	const openModal = () => {
 		try {
-			if (!$readHistory?.find((val) => val === articulo.id)) {
+			if (Array.isArray($readHistory) && !$readHistory?.find((val) => val === articulo.id)) {
 				$readHistory = [...$readHistory, articulo.id];
 			}
 		} catch (error) {
