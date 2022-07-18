@@ -5,22 +5,33 @@
 	import Popup from './Popup.svelte';
 	const { open } = getContext('simple-modal');
 	import { browser } from '$app/env';
+	import * as Sentry from '@sentry/browser';
 
 	export let openModalByDefault: boolean = false; //dont add article and open modal by default
 	export let articulo: RawArticulo;
 	export let hex_color: string = 'ffffff';
 
-	readHistory.subscribe((value) => {
-		if (value?.find((val) => val === articulo.id)) {
-			if (hex_color.length <= 6) {
-				hex_color = `${hex_color}88`;
+	try {
+		readHistory.subscribe((value) => {
+			if (value?.find((val) => val === articulo.id)) {
+				if (hex_color.length <= 6) {
+					hex_color = `${hex_color}88`;
+				}
 			}
-		}
-	});
+		});
+	} catch (error) {
+		Sentry.captureException(error);
+		Sentry.captureException(new Error('handled error for readHistory (1)'));
+	}
 
 	const openModal = () => {
-		if (!$readHistory?.find((val) => val === articulo.id)) {
-			$readHistory = [...$readHistory, articulo.id];
+		try {
+			if (!$readHistory?.find((val) => val === articulo.id)) {
+				$readHistory = [...$readHistory, articulo.id];
+			}
+		} catch (error) {
+			Sentry.captureException(error);
+			Sentry.captureException(new Error('handled error for readHistory (2)'));
 		}
 		open(
 			Popup,
