@@ -13,7 +13,8 @@
 
 	try {
 		readHistory.subscribe((value) => {
-			if (value?.find((val) => val === articulo.id)) {
+			console.log('Array.isArray(value)', Array.isArray(value));
+			if (Array.isArray(value) && value?.find((val) => val === articulo.id)) {
 				if (hex_color.length <= 6) {
 					hex_color = `${hex_color}88`;
 				}
@@ -21,7 +22,7 @@
 		});
 	} catch (error) {
 		Sentry.captureException(error);
-		Sentry.captureException(new Error('handled error for readHistory (1)'));
+		Sentry.captureException(new Error('handled error for readHistory (1) v2'));
 	}
 
 	const openModal = () => {
