@@ -3,9 +3,10 @@
 	import Indice from './Indice.svelte';
 	export let capitulos: RawCapitulo[];
 	import { browser } from '$app/env';
+	import cloneDeep from 'lodash.clonedeep'
 
-	function sortedArticulos(articulos: RawArticulo[]) {
-		return articulos.sort((a, b) => {
+	function sortedArticulos(articulos: SearchArticulo[]): SearchArticulo[] {
+		return articulos.sort((a: SearchArticulo, b: SearchArticulo) => {
 			if (a.attributes.numero_de_articulo < b.attributes.numero_de_articulo) {
 				return -1;
 			}
@@ -36,6 +37,115 @@ https://tabla-constitucional.cl/
 			hasBeenCopied = true;
 		}
 	}
+
+	// Search state data
+	let onSearchState: boolean = false;
+	let numberOfSearchResults: number = 0;
+	let searchValue: string = '';
+	let currentSearch: SearchCapitulo[] = cloneDeep(capitulos as SearchCapitulo[]);
+
+	function handleSearch(event: Event) {
+		const target = event.target as HTMLInputElement;
+		let valueSearch: string = target.value.trim();
+		numberOfSearchResults = 0
+		const baseCapitulos = cloneDeep(capitulos as SearchCapitulo[]);
+
+		if (!valueSearch || valueSearch.length === 0) {
+			onSearchState = false;
+			currentSearch = baseCapitulos;
+			return
+		}
+		onSearchState = true;
+
+		// Get all numbers contains in valueSearch
+		const arrayNumeroDeArticulo: number[] = valueSearch.split(/[^0-9]/).filter((v: string) => v.length > 0).map((v: string) => parseInt(v));
+		
+		currentSearch = [...baseCapitulos].map((capitulo: SearchCapitulo) => { // Map all articulos of capitulo
+				// Get subCapitulos from capitulo
+				capitulo.attributes.sub_capitulos.data = [...capitulo.attributes.sub_capitulos.data].map((subCapitulo: SearchSubCapitulo) => {
+
+					// Get articulos from subCapitulo
+					subCapitulo.attributes.articulos.data = [...subCapitulo.attributes.articulos.data].filter((articulo: SearchArticulo) => {
+							articulo.attributes.beforeHighlightedContenido = ""
+							articulo.attributes.highlightContenido = ""
+							articulo.attributes.afterHighlightedContenido = ""
+							const cleanContenido: string = articulo.attributes.contenido.replace(/\n/g, " ");
+							const matchContenido: boolean = cleanContenido.toLowerCase().includes(valueSearch.toLowerCase())
+
+							if (matchContenido) {
+								let {0: beforeHighlightedContenido, 1: afterHighlightedContenido} = cleanContenido.toLowerCase().split(valueSearch.toLowerCase()) // get before and after highlighted contenido
+								let searchSplited: string[] = valueSearch.split(" ")
+
+								// Concat before and after if the word is croped in the search
+								// Example: if search is: "transversal ent" it will be "transversal entre"
+								if (beforeHighlightedContenido.length > 0) {
+									// We get the first word of the search and the last word of the beforeHighlightedContenido
+									const beforeHighlightedWords: string[] = beforeHighlightedContenido.split(" ").filter((v: string) => v.length > 0)
+									const concatenatedWord: string = searchSplited[0]+beforeHighlightedWords.at(-1)
+									
+									if (cleanContenido.includes(concatenatedWord)) { // We concat them and we check if it is in the cleanContenido
+										searchSplited.shift() // Delete first word
+										beforeHighlightedWords.pop() // Delete last word
+										valueSearch = `${searchSplited.join(" ")} ${concatenatedWord}` // Join both
+										beforeHighlightedContenido = beforeHighlightedWords.join(" ") // Update beforeHighlightedContenido without the last word
+									}
+								}
+
+								if (afterHighlightedContenido.length > 0) { // Same thing for afterHighlightedContenido
+									const afterHighlightedWords: string[] = afterHighlightedContenido.split(" ").filter((v) => v.length > 0)
+									const concatenatedWord: string = searchSplited.at(-1)+afterHighlightedWords[0]
+
+									if (cleanContenido.includes(concatenatedWord)) {
+										searchSplited.pop()
+										valueSearch = `${searchSplited.join(" ")} ${concatenatedWord}`
+										afterHighlightedWords.shift()
+										afterHighlightedContenido = afterHighlightedWords.join(" ")
+									}
+								}
+								
+								// Crop by standard sementics sentences (",;:.")
+								if (beforeHighlightedContenido.length > 50) {
+									const beforeHighlightedSentences: string[] = beforeHighlightedContenido.split(/[,.;:]/).filter((str: string) => str && str.length > 0) // Split string by "," or "." or ";" or ":"
+
+									beforeHighlightedContenido = beforeHighlightedSentences.at(-1) ?? ''
+									if (beforeHighlightedContenido.length < 20) { // If the sentence is too short, concat with the previous sentence
+										beforeHighlightedContenido = beforeHighlightedSentences.at(-2) ?? '' + beforeHighlightedSentences.at(-1) ?? ''
+									}
+								}
+								if (afterHighlightedContenido.length > 50) {
+									const afterHighlightedSentences: string[] = afterHighlightedContenido.split(/[,.;:]/).filter((str: string) => str && str.length > 0) // Split string by "," or "." or ";" or ":"
+									
+									afterHighlightedContenido = afterHighlightedSentences[0]
+									if (afterHighlightedContenido.length < 20) { // If the sentence is too short, concat with the previous sentence
+										afterHighlightedContenido = afterHighlightedSentences[0] + afterHighlightedSentences[1]
+									}
+								}
+
+								// Add to current articulo the search result
+								articulo.attributes.beforeHighlightedContenido = beforeHighlightedContenido
+								articulo.attributes.highlightContenido = valueSearch
+								articulo.attributes.afterHighlightedContenido = afterHighlightedContenido
+							}
+
+						const searchFilter = (
+								( arrayNumeroDeArticulo && arrayNumeroDeArticulo.length > 0 && arrayNumeroDeArticulo.includes(articulo.attributes.numero_de_articulo) ) || // Filter by numeroDeArticulo
+								( matchContenido ) || // Filter by contenido
+								( articulo.attributes.nombre_corto.toLowerCase().includes(valueSearch.toLowerCase()) ) || // Filter by nombre_corto
+								( articulo.attributes.simbolo.toLowerCase().includes(valueSearch.toLowerCase()) ) // Filter by simbolo
+						)
+
+						if (searchFilter) {
+							numberOfSearchResults++
+						}
+
+						return searchFilter
+					});
+					return { ...subCapitulo }
+				}).filter((subCapitulo) => subCapitulo.attributes.articulos.data.length > 0); // Remove all subCapitulos without articulos
+
+			return { ...capitulo }
+		}).filter((capitulo) => capitulo.attributes.sub_capitulos.data && capitulo.attributes.sub_capitulos.data.length > 0); // Remove all capitulos without subCapitulos
+	}
 </script>
 
 <h1 class="text-4xl md:text-6xl pl-3 md:pl-6 font-extralight text-[#25f8b9db] my-5">
@@ -45,8 +155,7 @@ https://tabla-constitucional.cl/
 <p class="pl-3 md:pl-6 text-white text-lg">
 	En esta página se encuentran todos los artículos de la <a
 		href="https://www.chileconvencion.cl/"
-		class="underline"
-		target="blanc">nueva constitución</a
+		class="underline">nueva constitución</a
 	> separados por capítulos y subcapítulos. Está animado como una tabla periódica y separada en colores
 	para hacerla mas entretenida.
 </p>
@@ -131,17 +240,28 @@ https://tabla-constitucional.cl/
 
 <br />
 
-<img class="max-w-xl w-full mt-10 m-auto" src="./como-funciona.webp" alt="Como Funciona" />
+<input type="text" value={searchValue} on:input={handleSearch} />
 
-<Indice {capitulos} />
+{#if onSearchState}
+<p class="text-white">
+	Match: { numberOfSearchResults }
+</p>
+{:else}
+	<img class="max-w-xl w-full mt-10 m-auto" src="./como-funciona.webp" alt="Como Funciona" />
+	<Indice {capitulos} />
+{/if}
 
-{#each capitulos as capitulo}
-	<h2
-		class="text-2xl md:text-3xl pl-3 md:pl-6 text-white font-bold mt-6"
-		id={`${capitulo.attributes.Nombre}-capitulo`}
-	>
-		{capitulo.attributes.Nombre}
-	</h2>
+{#each currentSearch as capitulo}
+
+	{#if capitulo.attributes.sub_capitulos.data && capitulo.attributes.sub_capitulos.data.length > 0}
+		<h2
+			class="text-2xl md:text-3xl pl-3 md:pl-6 text-white font-bold mt-6"
+			id={`${capitulo.attributes.Nombre}-capitulo`}
+		>
+			{capitulo.attributes.Nombre}
+		</h2>
+	{/if}
+
 	{#each capitulo.attributes.sub_capitulos.data as subCapitulo}
 		<div
 			class="pl-3 md:pl-6 flex items-center mt-4 mb-2"
@@ -158,6 +278,13 @@ https://tabla-constitucional.cl/
 		<div class="pl-3 md:pl-6 mb-6 md:mb-10">
 			{#each sortedArticulos(subCapitulo.attributes.articulos.data) as articulo}
 				<Articulo {articulo} hex_color={subCapitulo.attributes.hex_color} />
+				{#if onSearchState}
+					<p class="text-white md:mt-3">
+							{	articulo.attributes.beforeHighlightedContenido }
+							<span class="underline decoration-yellow-500">{ articulo.attributes.highlightContenido }</span>
+							{ articulo.attributes.afterHighlightedContenido }
+					</p>
+				{/if}
 			{/each}
 		</div>
 	{/each}
