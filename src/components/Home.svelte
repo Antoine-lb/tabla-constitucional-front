@@ -69,12 +69,12 @@ https://tabla-constitucional.cl/
 							articulo.attributes.beforeHighlightedContenido = ""
 							articulo.attributes.highlightContenido = ""
 							articulo.attributes.afterHighlightedContenido = ""
-							const cleanContenido: string = articulo.attributes.contenido.replace(/\n/g, " ");
-							const matchContenido: boolean = cleanContenido.toLowerCase().includes(valueSearch.toLowerCase())
-
+							let copyValueSearch: string = valueSearch.toLowerCase()
+							const cleanContenido: string = articulo.attributes.contenido.replace(/\n/g, " ").toLowerCase()
+							const matchContenido: boolean = cleanContenido.includes(copyValueSearch)
 							if (matchContenido) {
-								let {0: beforeHighlightedContenido, 1: afterHighlightedContenido} = cleanContenido.toLowerCase().split(valueSearch.toLowerCase()) // get before and after highlighted contenido
-								let searchSplited: string[] = valueSearch.split(" ")
+								let {0: beforeHighlightedContenido, 1: afterHighlightedContenido} = cleanContenido.split(copyValueSearch.toLowerCase()) // get before and after highlighted contenido
+								let searchSplited: string[] = copyValueSearch.split(" ")
 
 								// Concat before and after if the word is croped in the search
 								// Example: if search is: "transversal ent" it will be "transversal entre"
@@ -86,7 +86,7 @@ https://tabla-constitucional.cl/
 									if (cleanContenido.includes(concatenatedWord)) { // We concat them and we check if it is in the cleanContenido
 										searchSplited.shift() // Delete first word
 										beforeHighlightedWords.pop() // Delete last word
-										valueSearch = `${searchSplited.join(" ")} ${concatenatedWord}` // Join both
+										copyValueSearch = `${searchSplited.join(" ")} ${concatenatedWord}` // Join both
 										beforeHighlightedContenido = beforeHighlightedWords.join(" ") // Update beforeHighlightedContenido without the last word
 									}
 								}
@@ -97,7 +97,7 @@ https://tabla-constitucional.cl/
 
 									if (cleanContenido.includes(concatenatedWord)) {
 										searchSplited.pop()
-										valueSearch = `${searchSplited.join(" ")} ${concatenatedWord}`
+										copyValueSearch = `${searchSplited.join(" ")} ${concatenatedWord}`
 										afterHighlightedWords.shift()
 										afterHighlightedContenido = afterHighlightedWords.join(" ")
 									}
@@ -123,15 +123,15 @@ https://tabla-constitucional.cl/
 
 								// Add to current articulo the search result
 								articulo.attributes.beforeHighlightedContenido = beforeHighlightedContenido
-								articulo.attributes.highlightContenido = valueSearch
+								articulo.attributes.highlightContenido = copyValueSearch
 								articulo.attributes.afterHighlightedContenido = afterHighlightedContenido
 							}
 
 						const searchFilter = (
 								( arrayNumeroDeArticulo && arrayNumeroDeArticulo.length > 0 && arrayNumeroDeArticulo.includes(articulo.attributes.numero_de_articulo) ) || // Filter by numeroDeArticulo
 								( matchContenido ) || // Filter by contenido
-								( articulo.attributes.nombre_corto.toLowerCase().includes(valueSearch.toLowerCase()) ) || // Filter by nombre_corto
-								( articulo.attributes.simbolo.toLowerCase().includes(valueSearch.toLowerCase()) ) // Filter by simbolo
+								( articulo.attributes.nombre_corto.toLowerCase().includes(copyValueSearch.toLowerCase()) ) || // Filter by nombre_corto
+								( articulo.attributes.simbolo.toLowerCase().includes(copyValueSearch.toLowerCase()) ) // Filter by simbolo
 						)
 
 						if (searchFilter) {
