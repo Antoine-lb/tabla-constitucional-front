@@ -25,6 +25,14 @@
 			>www.chileconvencion.cl</a
 		>
 	</p>
+	<p class="text-white text-">
+		Apruebo o Rechazo❓ 🔎 Descubre tu afinidad 💕 Compara diferencias y novedades: <a
+			class="underline"
+			target="blanc"
+			href="http://brujulaconstituyente.cl"
+			>www.brujulaconstituyente.cl</a
+		>
+	</p>
 	<p class="text-white ">
 		Para una version audio de la constitución (Youtube): <a
 			class="underline"
