@@ -29,8 +29,7 @@
 		Apruebo o Rechazo❓ 🔎 Descubre tu afinidad 💕 Compara diferencias y novedades: <a
 			class="underline"
 			target="blanc"
-			href="http://brujulaconstituyente.cl"
-			>www.brujulaconstituyente.cl</a
+			href="http://brujulaconstituyente.cl">www.brujulaconstituyente.cl</a
 		>
 	</p>
 	<p class="text-white ">
@@ -66,6 +65,13 @@
 		<a class="underline" target="blanc" href="https://twitter.com/XCMLBG">(@XCMLBG)</a>
 		y
 		<a class="underline" target="blanc" href="https://www.linkedin.com/in/antoine-lb/">Antoine</a>
+	</p>
+
+	<p class="text-white mb-5">
+		Gracias también a <a class="underline" target="blanc" href="https://github.com/owalid">
+			Owalid
+		</a>
+		por el motor de búsqueda
 	</p>
 
 	<p class="text-white text-2xl font-bold">✉️ Contacto</p>
