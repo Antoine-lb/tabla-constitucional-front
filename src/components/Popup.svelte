@@ -3,10 +3,10 @@
 	import { browser } from '$app/env';
 	export let articulo: RawArticulo;
 	import { getContext } from 'svelte';
+	import Contenido from './Contenido.svelte';
 
 	let hasBeenCopied: boolean = false;
 	const { close } = getContext('simple-modal');
-	const splited_content = articulo.attributes.contenido.split(/[0-9]+.\s/);
 
 	let url: string;
 	url = `articulo-${articulo.attributes.numero_de_articulo}`;
@@ -46,16 +46,7 @@ https://tabla-constitucional.cl/${url}
 	{articulo.attributes.nombre_corto}
 </h2>
 
-<ul>
-	{#each splited_content as inciso, index}
-		{#if index !== 0}
-			<li class="mb-3"><b>{index}.</b> {inciso}</li>
-		{/if}
-		{#if splited_content.length === 1}
-			<li>{inciso}</li>
-		{/if}
-	{/each}
-</ul>
+<Contenido {articulo} />
 
 <p class="font-bold text-md">Página: {articulo.attributes.pagina}</p>
 <a
