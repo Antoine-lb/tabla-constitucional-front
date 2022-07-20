@@ -56,7 +56,7 @@ https://tabla-constitucional.cl/
 			return
 		}
 		onSearchState = true;
-
+		const lowerValueSearch: string = valueSearch.toLowerCase()
 		// Get all numbers contains in valueSearch
 		const arrayNumeroDeArticulo: number[] = valueSearch.split(/[^0-9]/).filter((v: string) => v.length > 0).map((v: string) => parseInt(v));
 		
@@ -69,11 +69,12 @@ https://tabla-constitucional.cl/
 							articulo.attributes.beforeHighlightedContenido = ""
 							articulo.attributes.highlightContenido = ""
 							articulo.attributes.afterHighlightedContenido = ""
-							let copyValueSearch: string = valueSearch.toLowerCase()
+							let copyValueSearch: string = lowerValueSearch
 							const cleanContenido: string = articulo.attributes.contenido.replace(/\n/g, " ").toLowerCase()
 							const matchContenido: boolean = cleanContenido.includes(copyValueSearch)
+
 							if (matchContenido) {
-								let {0: beforeHighlightedContenido, 1: afterHighlightedContenido} = cleanContenido.split(copyValueSearch.toLowerCase()) // get before and after highlighted contenido
+								let {0: beforeHighlightedContenido, 1: afterHighlightedContenido} = cleanContenido.split(copyValueSearch) // get before and after highlighted contenido
 								let searchSplited: string[] = copyValueSearch.split(" ")
 
 								// Concat before and after if the word is croped in the search
@@ -92,8 +93,8 @@ https://tabla-constitucional.cl/
 								}
 
 								if (afterHighlightedContenido.length > 0) { // Same thing for afterHighlightedContenido
-									const afterHighlightedWords: string[] = afterHighlightedContenido.split(" ").filter((v) => v.length > 0)
-									const concatenatedWord: string = searchSplited.at(-1)+afterHighlightedWords[0]
+									const afterHighlightedWords: string[] = afterHighlightedContenido.split(" ").filter((v: string) => v.length > 0)
+									const concatenatedWord: string = searchSplited.at(-1) + afterHighlightedWords[0]
 
 									if (cleanContenido.includes(concatenatedWord)) {
 										searchSplited.pop()
@@ -130,8 +131,8 @@ https://tabla-constitucional.cl/
 						const searchFilter = (
 								( arrayNumeroDeArticulo && arrayNumeroDeArticulo.length > 0 && arrayNumeroDeArticulo.includes(articulo.attributes.numero_de_articulo) ) || // Filter by numeroDeArticulo
 								( matchContenido ) || // Filter by contenido
-								( articulo.attributes.nombre_corto.toLowerCase().includes(copyValueSearch.toLowerCase()) ) || // Filter by nombre_corto
-								( articulo.attributes.simbolo.toLowerCase().includes(copyValueSearch.toLowerCase()) ) // Filter by simbolo
+								( articulo.attributes.nombre_corto.toLowerCase().includes(lowerValueSearch) ) || // Filter by nombre_corto
+								( articulo.attributes.simbolo.toLowerCase().includes(lowerValueSearch) ) // Filter by simbolo
 						)
 
 						if (searchFilter) {
