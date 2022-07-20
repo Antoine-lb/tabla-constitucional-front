@@ -1,40 +1,40 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { readHistory } from '../stores/readHistoryStore';
 	import { getContext } from 'svelte';
 	import Popup from './Popup.svelte';
 	const { open } = getContext('simple-modal');
 	import { browser } from '$app/env';
-	import * as Sentry from '@sentry/browser';
+	// import { readHistory } from '../stores/readHistoryStore';
+	// import * as Sentry from '@sentry/browser';
 
 	export let openModalByDefault: boolean = false; //dont add article and open modal by default
 	export let articulo: RawArticulo;
 	export let hex_color: string = 'ffffff';
 
-	try {
-		readHistory.subscribe((value) => {
-			if (Array.isArray(value) && value?.find((val) => val === articulo.id)) {
-				if (hex_color.length <= 6) {
-					hex_color = `${hex_color}88`;
-				}
-			}
-		});
-	} catch (error) {
-		console.log('error readHistory (1) v2', error);
-		Sentry.captureException(error);
-		Sentry.captureException(new Error('handled error for readHistory (1) v2'));
-	}
+	// try {
+	// 	readHistory.subscribe((value) => {
+	// 		if (Array.isArray(value) && value?.find((val) => val === articulo.id)) {
+	// 			if (hex_color.length <= 6) {
+	// 				hex_color = `${hex_color}88`;
+	// 			}
+	// 		}
+	// 	});
+	// } catch (error) {
+	// 	console.log('error readHistory (1) v2', error);
+	// 	Sentry.captureException(error);
+	// 	Sentry.captureException(new Error('handled error for readHistory (1) v2'));
+	// }
 
 	const openModal = () => {
-		try {
-			if (Array.isArray($readHistory) && !$readHistory?.find((val) => val === articulo.id)) {
-				$readHistory = [...$readHistory, articulo.id];
-			}
-		} catch (error) {
-			console.log('error readHistory (2) v2', error);
-			Sentry.captureException(error);
-			Sentry.captureException(new Error('handled error for readHistory (2) v2'));
-		}
+		// try {
+		// 	if (Array.isArray($readHistory) && !$readHistory?.find((val) => val === articulo.id)) {
+		// 		$readHistory = [...$readHistory, articulo.id];
+		// 	}
+		// } catch (error) {
+		// 	console.log('error readHistory (2) v2', error);
+		// 	Sentry.captureException(error);
+		// 	Sentry.captureException(new Error('handled error for readHistory (2) v2'));
+		// }
 		open(
 			Popup,
 			{ articulo: articulo },

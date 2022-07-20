@@ -332,20 +332,26 @@ https://tabla-constitucional.cl/
 			</h3>
 		</div>
 		<div class="pl-3 md:pl-6 mb-6 md:mb-10">
-			{#each sortedArticulos(subCapitulo.attributes.articulos.data) as articulo}
-				<Articulo {articulo} hex_color={subCapitulo.attributes.hex_color} />
-				{#if onSearchState}
-					<div class="bg-white rounded-xl p-5 m-5 shadow-custom">
-						<p class="text-black md:mt-3">
-							{articulo.attributes.beforeHighlightedContenido}
-							<span class="font-bold underline decoration-yellow-500"
-								>{articulo.attributes.highlightContenido}</span
-							>
-							{articulo.attributes.afterHighlightedContenido}
-						</p>
-					</div>
-				{/if}
-			{/each}
+			{#if onSearchState}
+				{#each sortedArticulos(subCapitulo.attributes.articulos.data) as articulo}
+					<Articulo {articulo} hex_color={subCapitulo.attributes.hex_color} />
+					{#if articulo.attributes.beforeHighlightedContenido || articulo.attributes.highlightContenido}
+						<div class="bg-white rounded-xl p-5 m-5 shadow-custom">
+							<p class="text-black">
+								{articulo.attributes.beforeHighlightedContenido}
+								<span class="font-bold underline decoration-yellow-500"
+									>{articulo.attributes.highlightContenido}</span
+								>
+								{articulo.attributes.afterHighlightedContenido}
+							</p>
+						</div>
+					{/if}
+				{/each}
+			{:else}
+				{#each sortedArticulos(subCapitulo.attributes.articulos.data) as articulo}
+					<Articulo {articulo} hex_color={subCapitulo.attributes.hex_color} />
+				{/each}
+			{/if}
 		</div>
 	{/each}
 {/each}
