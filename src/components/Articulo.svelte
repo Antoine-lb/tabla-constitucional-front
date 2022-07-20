@@ -20,6 +20,7 @@
 			}
 		});
 	} catch (error) {
+		console.log('error readHistory (1) v2', error);
 		Sentry.captureException(error);
 		Sentry.captureException(new Error('handled error for readHistory (1) v2'));
 	}
@@ -30,6 +31,7 @@
 				$readHistory = [...$readHistory, articulo.id];
 			}
 		} catch (error) {
+			console.log('error readHistory (2) v2', error);
 			Sentry.captureException(error);
 			Sentry.captureException(new Error('handled error for readHistory (2) v2'));
 		}
@@ -106,9 +108,5 @@
 		-webkit-line-clamp: 2;
 		-webkit-box-orient: vertical;
 		overflow: hidden;
-	}
-
-	.shadow-custom {
-		box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 	}
 </style>
