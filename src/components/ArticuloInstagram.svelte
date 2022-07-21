@@ -72,6 +72,7 @@ ${verMasEnLaPagina}
 		href={`https://tabla-constitucional.cl/articulo-${articulo.attributes.pagina}`}
 		>tabla-constitucional.cl/articulo-{articulo.attributes.pagina}</a
 	>
+	<br />
 	<a
 		class="underline block"
 		target="blanc"
@@ -86,6 +87,10 @@ ${verMasEnLaPagina}
 </div>
 
 <div class="bg-white p-10 m-10">
+	<div>
+		<input type="checkbox" id="scales" name="scales" />
+		<label for="scales">Does the article has the image?</label>
+	</div>
 	<div>
 		<input type="checkbox" id="scales" name="scales" />
 		<label for="scales">Add correct flair</label>
