@@ -41,14 +41,14 @@
 		<a
 			class="bg-white p-6 rounded-md text-xl font-bold text-purple-900 m-10"
 			target="_self"
-			href={`/i/articulo-${article.attributes.numero_de_articulo - 1}`}
+			href={`/r/articulo-${article.attributes.numero_de_articulo - 1}`}
 		>
 			Anterior</a
 		>
 		<a
 			class="bg-white p-6 rounded-md text-xl font-bold text-purple-900 m-10"
 			target="_self"
-			href={`/i/articulo-${article.attributes.numero_de_articulo + 1}`}>Siguiente</a
+			href={`/r/articulo-${article.attributes.numero_de_articulo + 1}`}>Siguiente</a
 		>
 	</div>
 {/if}
