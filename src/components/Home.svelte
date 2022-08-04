@@ -94,7 +94,8 @@ https://tabla-constitucional.cl/
 									const beforeHighlightedWords: string[] = beforeHighlightedContenido
 										.split(' ')
 										.filter((v: string) => v.length > 0);
-									const concatenatedWord: string = searchSplited[0] + beforeHighlightedWords.at(-1);
+									const concatenatedWord: string =
+										searchSplited[0] + beforeHighlightedWords?.at(-1);
 
 									if (cleanContenido.includes(concatenatedWord)) {
 										// We concat them and we check if it is in the cleanContenido
@@ -110,7 +111,7 @@ https://tabla-constitucional.cl/
 									const afterHighlightedWords: string[] = afterHighlightedContenido
 										.split(' ')
 										.filter((v: string) => v.length > 0);
-									const concatenatedWord: string = searchSplited.at(-1) + afterHighlightedWords[0];
+									const concatenatedWord: string = searchSplited?.at(-1) + afterHighlightedWords[0];
 
 									if (cleanContenido.includes(concatenatedWord)) {
 										searchSplited.pop();
@@ -126,12 +127,12 @@ https://tabla-constitucional.cl/
 										.split(/[,.;:]/)
 										.filter((str: string) => str && str.length > 0); // Split string by "," or "." or ";" or ":"
 
-									beforeHighlightedContenido = beforeHighlightedSentences.at(-1) ?? '';
+									beforeHighlightedContenido = beforeHighlightedSentences?.at(-1) ?? '';
 									if (beforeHighlightedContenido.length < 20) {
 										// If the sentence is too short, concat with the previous sentence
 										beforeHighlightedContenido =
-											beforeHighlightedSentences.at(-2) ??
-											'' + beforeHighlightedSentences.at(-1) ??
+											beforeHighlightedSentences?.at(-2) ??
+											'' + beforeHighlightedSentences?.at(-1) ??
 											'';
 									}
 								}
